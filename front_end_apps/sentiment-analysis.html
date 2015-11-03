@@ -1,0 +1,130 @@
+<html>
+      <head>
+	  <title>Sentimental Analysis </title>
+        <!--Load the AJAX API-->
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+
+          // Load the Visualization API and the piechart package.
+          google.load('visualization', '1.0', {'packages':['corechart']});
+
+          // Set a callback to run when the Google Visualization API is loaded.
+          google.setOnLoadCallback(drawChart);
+
+          // Callback that creates and populates a data table,
+          // instantiates the pie chart, passes in the data and
+          // draws it.
+          function drawChart() {
+
+            // Create the data table.
+            var data = google.visualization.arrayToDataTable([
+          ['sentiment', 'Tweets (in percentage)'],
+		  ['positive',31.1],
+		  ['negative',46.6],
+		  ['neutral',22.3]
+        ]);
+            // Create the data table.
+           var data2 = google.visualization.arrayToDataTable([
+          ['sentiment', 'Tweets (in percentage)'],
+		  ['positive',60.9],
+		  ['negative',29.2],
+		  ['neutral',9.9]
+        ]);
+           
+		   var data3 = google.visualization.arrayToDataTable([
+          ['sentiment', 'Tweets (in percentage)'],
+		  ['positive',24.4],
+		  ['negative',68.1],
+		  ['neutral',7.4]
+        ]);
+		
+			var data4 = google.visualization.arrayToDataTable([
+			['Organization', 'Positive', 'Negative', 'Neutral'],
+			['UNICEF', 5213, 698, 403],
+			['OXFAM', 5044, 541, 351],
+			['ADB', 3200, 947, 657],
+			['CWS Indonesia', 1008, 450, 125],
+			['Philippines Development',2012,806,51]
+        ]);
+		var data5 = google.visualization.arrayToDataTable([
+			['Organization', 'Positive', 'Negative', 'Neutral'],
+			['CARE Philippines', 632, 138, 138],
+			['CWS Indonesia', 125, 46, 36],
+			['GoLive Indonesia', 179, 1058, 289],
+			['Handicap Philippines', 241, 61, 81],
+			['Hapinoy Philippines',73,0,6],
+			['Indonesia CPR', 76,314,80],
+			['ITDP Indonesia', 590,499,186],
+			['MCA Indonesia',0,21,1],
+			['UNICEF Indonesia', 1450,460,261],
+			['OB Philippines',486,1654,650],
+			['Oxfam Indonesia', 1805,459,486],
+			['PH_G Initiative', 213,54,56],
+			['Philippines development', 1148,132,174],
+			['RNI Philippines', 15,72,18],
+			['ADB',1252,520,456],
+			['united philipino',469,1645,340],
+			['WE Philippines',45,0,0],
+			['XS Project ID', 169,473,168]
+        ]);
+
+            // Set chart options
+            var options = {'title':'Deforestation in Indonesia',
+                           'width':400,
+                           'height':300};
+            // Set chart options
+            var options2 = {'title':'Environment in Indonesia',
+                           'width':400,
+                           'height':300};
+            // Set chart options
+            var options3 = {'title':'Sentiments on poverty in Indonesia and Philippines',
+                           'width':400,
+                           'height':300};
+			var options4 = {
+							
+							'title' :'People view on organization',
+							'width': 700,
+							'height':500,
+							chart: {
+							title: 'People view on organization',
+							subtitle: 'Positive, Negative, and Neutral',
+							},
+							bars: 'horizontal' // Required for Material Bar Charts.
+							};
+							
+			var options5 = {
+							'title' :'Organization view on social causes',
+							'width': 1000,
+							'height':800,
+							chart: {
+							title: 'Organization view on social causes',
+							subtitle: 'Positive, Negative, and Neutral',
+							},
+							bars: 'horizontal' // Required for Material Bar Charts.
+							};
+			
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+            var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
+            chart2.draw(data2, options2);
+            var chart3 = new google.visualization.PieChart(document.getElementById('chart_div3'));
+            chart3.draw(data3, options3);
+			var chart4 = new google.visualization.BarChart(document.getElementById('chart_div4'));
+			chart4.draw(data4, options4);
+			var chart5 = new google.visualization.BarChart(document.getElementById('chart_div5'));
+			chart5.draw(data5, options5);
+
+          }
+        </script>
+      </head>
+
+      <body>
+        <!--Divs that will hold the charts-->
+        <div id="chart_div"></div>
+        <div id="chart_div2"></div>
+        <div id="chart_div3"></div>
+		<div id="chart_div4"></div>
+		<div id="chart_div5"></div>
+		</body>
+    </html>

@@ -1,0 +1,4155 @@
+<html>
+<head>
+<title>Organisation Followers : Google Maps visualization </title>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src = "https://www.google.com/jsapi"></script>
+<script type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+<body>
+<h2><font color= "blue"> Followers of the organizations</font></h2>
+<button onclick="initialize()"> Asia Development Bank</button>
+<button onclick="initialize1()">OXFAM Indonesia</button>
+<button onclick="initialize2()">WHO Philippines</button>
+<button onclick="initialize1()">ITDP Indonesia</button>
+<button onclick="initialize1()">DNPI Indonesia</button>
+<button onclick="initialize1()">Jurnalindo</button>
+<style>#map_canvas{
+ width:100%;
+ height:100%;
+}
+</style>
+<div id="map_canvas" >
+</div>
+<div id="piechart" style= "width:900px; height:500px;"></div>
+</body>
+</html>
+
+<script>
+ var infoWindow = new google.maps.InfoWindow();
+function addMarker(data,location, map, i) {
+  // Add the marker at the clicked location, and add the next-available label
+  // from the array of alphabetical characters.
+  if(i==-1){
+  console.log("inside -1 loop" + data[0]["name"]+data[0]["url_org"]);  
+   var marker = new google.maps.Marker({
+	icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+    position: location,
+    map: map
+  });
+    var html = '<div style="width:300px;"><b> 	organisation name:'+data[0]["name"]+'</b><br />'+'<a href="'+ data[0]["url_org"] + '">Click to navigate to the organisation url</a></div>';
+  //var html = data[0]["followers"][i] + data[0]["location"][i] +  data[0]["url"][i] ;
+  if (html) {
+		console.log("inside html" +html);
+      google.maps.event.addListener(marker, "click", function () {
+        infoWindow.setContent(html);
+        infoWindow.open( map, this);
+      });
+    }
+  }
+  else{
+    var marker = new google.maps.Marker({
+	icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+    position: location,
+    map: map
+  });
+  var html = '<div style="width:300px;"><b>followers name:'+data[0]["followers"][i]+'</b><br /><b>'+data[0]["location"][i] +'</b><br />'+'<a href="'+ data[0]["url"][i] + '">Click to navigate to the organisation url</a></div>';
+  //var html = data[0]["followers"][i] + data[0]["location"][i] +  data[0]["url"][i] ;
+  if (html) {
+      google.maps.event.addListener(marker, "click", function () {
+        infoWindow.setContent(html);
+        infoWindow.open( map, this);
+      });
+    }
+  }
+  
+  
+}
+
+function initialize()
+{
+var data = [
+  {
+    "name": [
+      "ADB_HQ"
+    ],
+    "id_number": [
+      44116
+    ],
+	"loc-lat" : [
+	16.599512,120.98422
+	],
+	"url_org" : [
+	"http://www.adb.org/"
+	],
+    "location_latlng": [
+      "null",
+      [
+        46.2017559,
+        6.1466014
+      ],
+      [
+        53.5120412,
+        -2.2434612
+      ],
+      [
+        34.2331373,
+        -102.4107493
+      ],
+      [
+        40.7305991,
+        -73.9865812
+      ],
+      [
+        39.3361278,
+        -76.7404194
+      ],
+      [
+        38.8949549,
+        -77.0366456
+      ],
+      [
+        43.7283874,
+        -79.34914869325
+      ],
+      "null",
+      [
+        51.5181111,
+        -0.1441398
+      ],
+      [
+        41.0096334,
+        28.9651646
+      ],
+      [
+        40.7305991,
+        -73.9865812
+      ],
+      [
+        28.6138967,
+        77.2159562
+      ],
+      [
+        36.29884975,
+        -82.3591966141095
+      ],
+      [
+        40.7305991,
+        -73.9865812
+      ],
+      [
+        43.7283874,
+        -79.34914869325
+      ],
+      [
+        38.8949549,
+        -77.0366456
+      ],
+      [
+        40.7305991,
+        -73.9865812
+      ],
+      "null",
+      [
+        28.6138967,
+        77.2159562
+      ],
+      [
+        14.5906216,
+        120.9799696
+      ],
+      [
+        1.2904527,
+        103.852038
+      ],
+      "null",
+      [
+        40.7305991,
+        -73.9865812
+      ],
+      "null",
+      [
+        27.549511,
+        90.5119273
+      ],
+      [
+        41.8933439,
+        12.4830718
+      ],
+      [
+        53.5120412,
+        -2.2434612
+      ],
+      [
+        51.5073219,
+        -0.1276474
+      ],
+      [
+        40.7305991,
+        -73.9865812
+      ],
+      [
+        23.7593572,
+        90.3788136
+      ],
+      "null",
+      [
+        40.7496292,
+        -73.9673898832459
+      ],
+      "null",
+      "null",
+      "null",
+      [
+        40.7305991,
+        -73.9865812
+      ],
+      [
+        42.3785931,
+        -71.1317136635526
+      ],
+      [
+        50.0874401,
+        14.4212556
+      ],
+      [
+        50.0874401,
+        14.4212556
+      ],
+      [
+        59.3251172,
+        18.0710935
+      ],
+      [
+        51.5073219,
+        -0.1276474
+      ],
+      [
+        25.2529955,
+        55.1771471150149
+      ],
+      "null",
+      "null",
+      [
+        14.5906216,
+        120.9799696
+      ],
+      "null",
+      "null",
+      "null",
+      [
+        38.8949549,
+        -77.0366456
+      ],
+      [
+        23.7593572,
+        90.3788136
+      ],
+      [
+        27.7076762,
+        85.3148882
+      ],
+      [
+        22.2793278,
+        114.1628131
+      ],
+      [
+        51.5400897,
+        0.0819264565158607
+      ],
+      [
+        14.5906216,
+        120.9799696
+      ],
+      [
+        38.8949549,
+        -77.0366456
+      ],
+      [
+        46.22653525,
+        6.14038732078338
+      ],
+      [
+        43.7283874,
+        -79.34914869325
+      ],
+      [
+        38.8949549,
+        -77.0366456
+      ],
+      [
+        1.2904527,
+        103.852038
+      ],
+      [
+        14.5736108,
+        121.0329706
+      ],
+      [
+        14.5906216,
+        120.9799696
+      ],
+      [
+        38.8949549,
+        -77.0366456
+      ],
+      [
+        48.9351403,
+        2.4258354
+      ],
+      [
+        48.9351403,
+        2.4258354
+      ],
+      "null",
+      [
+        40.7305991,
+        -73.9865812
+      ],
+      [
+        43.6529206,
+        -79.3849008
+      ],
+      [
+        51.5073219,
+        -0.1276474
+      ],
+      [
+        12.7503486,
+        122.7312101
+      ],
+      "null",
+      [
+        36.1622296,
+        -86.774353
+      ],
+      [
+        27.7076762,
+        85.3148882
+      ],
+      "null",
+      [
+        46.2017559,
+        6.1466014
+      ],
+      [
+        14.5906216,
+        120.9799696
+      ],
+      "null",
+      [
+        38.8949549,
+        -77.0366456
+      ],
+      [
+        49.2608944,
+        -123.1139383
+      ],
+      [
+        36.29884975,
+        -82.3591966141095
+      ],
+      "null",
+      "null",
+      "null",
+      [
+        27.7076762,
+        85.3148882
+      ],
+      [
+        12.7503486,
+        122.7312101
+      ],
+      [
+        -33.8548157,
+        151.2164539
+      ],
+      "null",
+      [
+        50.1106529,
+        8.6820934
+      ],
+      "null",
+      [
+        28.6138967,
+        77.2159562
+      ],
+      [
+        14.5906216,
+        120.9799696
+      ],
+      [
+        36.29884975,
+        -82.3591966141095
+      ],
+      [
+        25.3336984,
+        51.2295295
+      ],
+      [
+        38.8949549,
+        -77.0366456
+      ],
+      [
+        48.8565056,
+        2.3521334
+      ],
+      [
+        51.5073219,
+        -0.1276474
+      ],
+      [
+        51.5073219,
+        -0.1276474
+      ],
+      [
+        40.7305991,
+        -73.9865812
+      ],
+      [
+        40.7305991,
+        -73.9865812
+      ],
+      [
+        40.7305991,
+        -73.9865812
+      ],
+      "null",
+      [
+        14.5906216,
+        120.9799696
+      ],
+      [
+        35.889119,
+        128.604786
+      ],
+      [
+        25.609575,
+        85.1238191
+      ],
+      [
+        22.2793278,
+        114.1628131
+      ],
+      "null",
+      "null",
+      [
+        37.3864045,
+        126.637903723068
+      ],
+      "null",
+      [
+        51.5073219,
+        -0.1276474
+      ],
+      [
+        43.7283874,
+        -79.34914869325
+      ],
+      [
+        48.8565056,
+        2.3521334
+      ],
+      [
+        14.5669327,
+        121.039315543127
+      ],
+      "null",
+      [
+        22.2793278,
+        114.1628131
+      ],
+      [
+        39.9059093,
+        116.3913489
+      ],
+      [
+        22.2793278,
+        114.1628131
+      ],
+      [
+        38.8949549,
+        -77.0366456
+      ],
+      "null",
+      "null",
+      "null",
+      [
+        1.2904527,
+        103.852038
+      ],
+      "null",
+      [
+        14.5906216,
+        120.9799696
+      ],
+      [
+        43.7283874,
+        -79.34914869325
+      ],
+      [
+        37.5666791,
+        126.9782914
+      ],
+      [
+        51.5073219,
+        -0.1276474
+      ],
+      "null",
+      [
+        14.55459465,
+        121.021408611015
+      ],
+      [
+        40.7305991,
+        -73.9865812
+      ],
+      [
+        50.84404145,
+        4.36720169448285
+      ],
+      [
+        51.5073219,
+        -0.1276474
+      ],
+      "null",
+      [
+        53.5120412,
+        -2.2434612
+      ],
+      [
+        46.2017559,
+        6.1466014
+      ],
+      [
+        54.7023545,
+        -3.2765753
+      ],
+      [
+        53.5120412,
+        -2.2434612
+      ],
+      [
+        45.4210328,
+        -75.6900219
+      ],
+      [
+        41.9534255,
+        -73.7920752
+      ],
+      [
+        45.2980673,
+        -75.882021
+      ],
+      [
+        -27,
+        133
+      ],
+      [
+        50.84404145,
+        4.36720169448285
+      ],
+      [
+        38.9848265,
+        -77.0946459
+      ],
+      [
+        22.2793278,
+        114.1628131
+      ],
+      [
+        38.8949549,
+        -77.0366456
+      ],
+      [
+        38.8949549,
+        -77.0366456
+      ],
+      [
+        55.6867243,
+        12.5700724
+      ],
+      [
+        14.5906216,
+        120.9799696
+      ],
+      [
+        28.6138967,
+        77.2159562
+      ],
+      [
+        53.5120412,
+        -2.2434612
+      ],
+      "null",
+      [
+        46.2017559,
+        6.1466014
+      ],
+      [
+        27.7076762,
+        85.3148882
+      ],
+      "null",
+      [
+        53.5120412,
+        -2.2434612
+      ],
+      [
+        53.5120412,
+        -2.2434612
+      ],
+      [
+        40.7305991,
+        -73.9865812
+      ],
+      [
+        43.7283874,
+        -79.34914869325
+      ],
+      [
+        43.7283874,
+        -79.34914869325
+      ],
+      [
+        40.7305991,
+        -73.9865812
+      ],
+      [
+        40.7305991,
+        -73.9865812
+      ],
+      [
+        40.7305991,
+        -73.9865812
+      ],
+      [
+        40.7305991,
+        -73.9865812
+      ],
+      [
+        37.7792768,
+        -122.4192704
+      ],
+      [
+        37.3230107,
+        -122.0322519
+      ],
+      [
+        14.5906216,
+        120.9799696
+      ],
+      [
+        14.5906216,
+        120.9799696
+      ],
+      [
+        40.7305991,
+        -73.9865812
+      ],
+      [
+        43.7283874,
+        -79.34914869325
+      ],
+      [
+        13.5859219,
+        100.416086601645
+      ],
+      [
+        34.053717,
+        -118.2427266
+      ],
+      [
+        31.2253441,
+        121.4888922
+      ],
+      [
+        39.9059093,
+        116.3913489
+      ],
+      "null",
+      [
+        31.2253441,
+        121.4888922
+      ],
+      "null",
+      [
+        -27,
+        133
+      ],
+      [
+        37.7792768,
+        -122.4192704
+      ],
+      [
+        51.5073219,
+        -0.1276474
+      ],
+      [
+        51.0000003,
+        9.9999997
+      ],
+      [
+        36.29884975,
+        -82.3591966141095
+      ],
+      "null",
+      [
+        50.8465565,
+        4.351697
+      ],
+      [
+        50.1106529,
+        8.6820934
+      ],
+      [
+        38.8949549,
+        -77.0366456
+      ],
+      [
+        14.5906216,
+        120.9799696
+      ],
+      [
+        34.2331373,
+        -102.4107493
+      ],
+      [
+        41.3082138,
+        -72.9250518
+      ],
+      [
+        38.8949549,
+        -77.0366456
+      ],
+      [
+        29.9499323,
+        -90.0701156
+      ],
+      [
+        59.3251172,
+        18.0710935
+      ],
+      [
+        59.3251172,
+        18.0710935
+      ],
+      [
+        38.8949549,
+        -77.0366456
+      ],
+      [
+        51.5073219,
+        -0.1276474
+      ],
+      [
+        46.9482713,
+        7.4514512
+      ],
+      [
+        14.5906216,
+        120.9799696
+      ],
+      [
+        47.949809,
+        106.966724193881
+      ],
+      [
+        27.7076762,
+        85.3148882
+      ],
+      "null"
+    ],
+    "url": [
+      "None",
+      "http://t.co/wlWqalHqn8",
+      "http://t.co/ZCCg9heJRD",
+      "http://t.co/vK2Oui046b",
+      "http://t.co/8is2Cfrvds",
+      "http://t.co/g7QtfrgXlV",
+      "http://t.co/xETfkqUImK",
+      "http://t.co/ydIy4gfZtQ",
+      "http://t.co/nyx5XPaXcm",
+      "http://t.co/AB4vAwXrUG",
+      "http://t.co/DPGLACDJBM",
+      "http://t.co/caki7X5wgC",
+      "http://t.co/zGRDOje68B",
+      "None",
+      "http://t.co/UScLFQrA4o",
+      "http://t.co/RGwe9HfeVA",
+      "http://t.co/vr4IEsCqEj",
+      "http://t.co/68FfXHkPsa",
+      "http://t.co/mc4BJOhVuZ",
+      "http://t.co/rwnFcLJNDp",
+      "http://t.co/TxvhjfKLqz",
+      "http://t.co/ZmPOtYp1UE",
+      "http://t.co/HG7RoQaZLk",
+      "http://t.co/tk1OTndL",
+      "http://t.co/BjaX3wO5Gy",
+      "http://t.co/WPXkNSNnvJ",
+      "http://t.co/Dv3eilA6Qe",
+      "http://t.co/S5b9KpcEXt",
+      "http://t.co/bLnpdoA5o3",
+      "http://t.co/gWlIsbdpki",
+      "http://t.co/TdbaTNqYPJ",
+      "None",
+      "http://t.co/VjOSyU2Vf5",
+      "http://t.co/xcvUKT5cR4",
+      "None",
+      "http://t.co/gn6i7WqeNg",
+      "http://t.co/XktaKFUCMH",
+      "http://t.co/nOTLOWkbmz",
+      "http://t.co/qpxuE2Jn",
+      "https://t.co/Iu8nwVgVNU",
+      "http://t.co/a9eLWet5oo",
+      "http://t.co/jnyx7VYSWk",
+      "http://t.co/SzF7nf7fMn",
+      "http://t.co/zKonHGSIi0",
+      "http://t.co/HLAhG6mqQx",
+      "http://t.co/s7fecNd6my",
+      "None",
+      "http://t.co/OssiwtI2s6",
+      "http://t.co/yCNk7ZV1Wd",
+      "http://t.co/Nu5IxC5k4B",
+      "http://t.co/PJUyXCrSiH",
+      "http://t.co/Ta076fuvHj",
+      "None",
+      "http://t.co/ePYyWJG9BC",
+      "None",
+      "http://t.co/p9lK6GrFoh",
+      "http://t.co/0lAlslWhBa",
+      "None",
+      "http://t.co/3n1LcJDoI9",
+      "http://t.co/fA4oM63Dda",
+      "None",
+      "None",
+      "http://t.co/7mPvteE6j8",
+      "http://t.co/z3N5ZGULzE",
+      "http://t.co/UPOYULBXFX",
+      "http://t.co/JlHlYY9OKK",
+      "http://t.co/Lpq906tpZn",
+      "None",
+      "http://t.co/LGpeBu8Tka",
+      "http://t.co/EpoHkKwK1h",
+      "http://t.co/dhZiqpQMgZ",
+      "http://t.co/irqK8KkmW7",
+      "http://t.co/jnsup1rYHr",
+      "http://t.co/D3lljH7D5X",
+      "http://t.co/fenKvAo4iJ",
+      "None",
+      "http://t.co/LNI9Nex0G5",
+      "http://t.co/RvRZspIO8c",
+      "http://t.co/M1WpbiGLYp",
+      "http://t.co/IxLjEAKXX4",
+      "None",
+      "None",
+      "None",
+      "None",
+      "http://t.co/PgWe8OtE4P",
+      "http://t.co/rx8XyGS47Y",
+      "None",
+      "http://t.co/3ngz2iFpue",
+      "None",
+      "http://t.co/7MJN90SbA1",
+      "None",
+      "http://t.co/yQaWu1zZOT",
+      "http://t.co/7oU2kHFje4",
+      "http://t.co/Luh49WXiyD",
+      "http://t.co/62CH64PBcN",
+      "http://t.co/1QgRvcZN3Z",
+      "http://t.co/pyBgnUQirE",
+      "http://t.co/JMt5ZSahQF",
+      "http://t.co/HXJf5nOrcz",
+      "http://t.co/UmqCI5AhUx",
+      "http://t.co/P2HAy5SnrR",
+      "None",
+      "http://t.co/oyykc1bmdw",
+      "None",
+      "http://t.co/PZslgFJOZ6",
+      "http://t.co/B2yc1IYkYl",
+      "http://t.co/JgbNcDhOep",
+      "http://t.co/64ZxXNZu9q",
+      "http://t.co/RyT2ScT8cy",
+      "http://t.co/hPdEHx8SbP",
+      "http://t.co/sdXEoeRMcw",
+      "http://t.co/LXGYadLpDJ",
+      "None",
+      "None",
+      "None",
+      "None",
+      "http://t.co/177fJYDjdc",
+      "http://t.co/wtXDHpwGlq",
+      "None",
+      "http://t.co/crSjhht8XJ",
+      "http://t.co/mNT2ehDCaF",
+      "http://t.co/bkl8ufVbOv",
+      "http://t.co/lTx4hr5K2B",
+      "http://t.co/fJ1QMzc5Qd",
+      "http://t.co/aAv4zKAioA",
+      "None",
+      "http://t.co/sl5zt8nZOF",
+      "http://t.co/vkE8NeIXHi",
+      "http://t.co/12e3pHAQZy",
+      "http://t.co/DVeuSyrfMk",
+      "http://t.co/Mp93iphtDl",
+      "http://t.co/3dCrpgxWkx",
+      "None",
+      "http://t.co/6LpUpVcVZt",
+      "http://t.co/umDqMTvs4i",
+      "http://t.co/F1f8llYaZE",
+      "http://t.co/FbuFW3PNef",
+      "http://t.co/L2SH1QDkAY",
+      "http://t.co/paanKbIRxZ",
+      "http://t.co/ugWN3sKLtA",
+      "http://t.co/POEOOsg9Jn",
+      "http://t.co/tjvvJGA47o",
+      "http://t.co/UJ790qnWID",
+      "http://t.co/GiOpp99VJr",
+      "http://t.co/VPu2ofbN6x",
+      "http://t.co/yabatiFOmt",
+      "http://t.co/jCrZUgio8H",
+      "None",
+      "http://t.co/CL4ctumimN",
+      "http://t.co/O0Ih55uxMh",
+      "http://t.co/9N7CqrfRYP",
+      "http://t.co/zJyWxMxhQr",
+      "http://t.co/em8XjbBFoC",
+      "http://t.co/a7o7YiGLIb",
+      "http://t.co/tWXw0I5f3b",
+      "http://t.co/XanjMyzUcQ",
+      "http://t.co/nK8VO1hqU5",
+      "http://t.co/qLNikmw8Yq",
+      "http://t.co/elKOaQVQSs",
+      "http://t.co/i7ZrUfK9Un",
+      "http://t.co/uarlbVNAys",
+      "http://t.co/7qVI5vqFrr",
+      "http://t.co/Rjm9rHq7MU",
+      "None",
+      "None",
+      "http://t.co/vyrMWXhe07",
+      "http://t.co/R0YNOGuhFx",
+      "http://t.co/Ex0id2Y6oR",
+      "http://t.co/mwaSar7U14",
+      "http://t.co/6pARFxkWYP",
+      "https://t.co/IRkpI0g81v",
+      "None",
+      "http://t.co/3OstqheB",
+      "None",
+      "http://t.co/F6tUVJ36lO",
+      "http://t.co/CEzdd8nzxE",
+      "http://t.co/uXobiKiIF7",
+      "http://t.co/wggAQkA0ME",
+      "http://t.co/aLdW1WcGvQ",
+      "http://t.co/qInn9KAL4Z",
+      "http://t.co/NGbT408l4p",
+      "http://t.co/KvYuNNwEU4",
+      "http://t.co/XKy6UZVpYB",
+      "http://t.co/k4iVWPHz5D",
+      "http://t.co/NgUd6eRXCR",
+      "http://t.co/9oAahmL9VU",
+      "http://t.co/dB8BpuJE4x",
+      "http://t.co/HdsxWKh1fs",
+      "http://t.co/O5Woad92z1",
+      "http://t.co/cIZsTFGV0y",
+      "http://t.co/If9cQQEL4i",
+      "http://t.co/0lBVzw28Ga",
+      "http://t.co/iGYdGrbMku",
+      "http://t.co/hEg6VHPEmL",
+      "http://t.co/fAaVHFE3eB",
+      "http://t.co/rwnFcLJNDp",
+      "None",
+      "None",
+      "http://t.co/DOf3PwPxuX"
+    ],
+    "followers": [
+      "MPB_WBCSD",
+      "wbcsd",
+      "GlblCtzn",
+      "TheGlobalGoals",
+      "UN_PGA",
+      "steve_hanke",
+      "AdamPosen",
+      "UNODC",
+      "UNPeacekeeping",
+      "BBC_WHYS",
+      "UNDPEurasia",
+      "IBTimes",
+      "unwomenindia",
+      "WBG_Gender",
+      "HuffPostImpact",
+      "WBG_Finance",
+      "R4Development",
+      "HeforShe",
+      "opengovpart",
+      "clairecoz",
+      "ryan_chua",
+      "UNDPpublicserv",
+      "co2degrees",
+      "HDRUNDP",
+      "CaelusGreenRoom",
+      "tsheringtobgay",
+      "FAOclimate",
+      "mcampaign",
+      "WaterAidUK",
+      "SheilaCoronel",
+      "BRACworld",
+      "globalcompact",
+      "LenniMontiel",
+      "post2015",
+      "TyrrellDuncan",
+      "Responsible_Biz",
+      "phumzileunwomen",
+      "GernotWagner",
+      "BjornLomborg",
+      "ahmed_nihan",
+      "siwi_water",
+      "OneYoungWorld",
+      "AIESEC",
+      "suraechinn",
+      "vine",
+      "WHOPhilippines",
+      "SBYudhoyono",
+      "bsantono",
+      "GuardianGDP",
+      "USGBC",
+      "ADB_Bangladesh",
+      "csapkota",
+      "bartlettkate",
+      "GuardianSustBiz",
+      "illacdiaz",
+      "WorldBankVideos",
+      "UNGeneva",
+      "Hbsicat",
+      "WBG_PPP",
+      "PaulineChiou",
+      "G2Jshah",
+      "NatashaH_Davis",
+      "Shanta_WB",
+      "COP21",
+      "giz_gmbh",
+      "CIF_Action",
+      "UNReliefChief",
+      "ntunio",
+      "CHAsiaProg",
+      "sonnyangara",
+      "GH_PARK",
+      "algore",
+      "nepalitimes",
+      "CSIS_USLD",
+      "WTODGAZEVEDO",
+      "MitziBorromeo",
+      "OfficeGSBrown",
+      "FLOTUS",
+      "DavidKatzEO",
+      "POTUS",
+      "sophie_fran",
+      "FTNED_CLUBASIA",
+      "JimKim_WBG",
+      "binitashah4",
+      "rxjtc",
+      "Andrea_Iffland",
+      "ADB_ElisabettaG",
+      "ADB_SarahOk",
+      "cmorris808",
+      "DailyO_",
+      "perrin68",
+      "ian_urbina",
+      "ammr",
+      "JulieDeMoyer",
+      "EFAReport",
+      "BrianCaplen",
+      "stef_palma",
+      "socialmedia2day",
+      "JohnKerry",
+      "motokorich",
+      "H2OPolicyComms",
+      "erikchurchill",
+      "wwaterforum7",
+      "anand3867singh",
+      "n_gough",
+      "OctavianoTatau",
+      "GS10KSmallBiz",
+      "GCF_News",
+      "ianbremmer",
+      "Climate_Action_",
+      "McKinsey_MGI",
+      "OECDObserver",
+      "ADB_DonP",
+      "BRobertsonSCMP",
+      "YvonneManTV",
+      "TomOrlik",
+      "PatrickMcGee_",
+      "sdonnan",
+      "educationmaste1",
+      "EnriquePenalosa",
+      "cnnphilippines",
+      "haslindatv",
+      "TheWorldPost",
+      "zhaiyongping",
+      "grp_resilience",
+      "mikej_sullivan",
+      "bbczeinabbadawi",
+      "OECDgov",
+      "aimbschool",
+      "JosephEStiglitz",
+      "pierremoscovici",
+      "asiahouseuk",
+      "karenlane32",
+      "newscientist",
+      "ilo",
+      "DFID_Research",
+      "WorldWeWant2015",
+      "pmharper",
+      "amspence98",
+      "HonEdFast",
+      "WhyDev",
+      "EIASBrussels",
+      "MessageCraft",
+      "_dgline_",
+      "climateprogress",
+      "IIED",
+      "cgiarclimate",
+      "csantamir",
+      "teriin",
+      "SEIclimate",
+      "sierraclub",
+      "Twiplomacy",
+      "kundadixit",
+      "bruneski",
+      "GlobalShapers",
+      "UNEP",
+      "earthinstitute",
+      "Storify",
+      "tweepsmap",
+      "nominetwork",
+      "bigthink",
+      "TEDTalks",
+      "andersoncooper",
+      "dickc",
+      "tim_cook",
+      "danteang2",
+      "csadb",
+      "paulmromer",
+      "NatGeo",
+      "GMS_CEP",
+      "PabloWeather",
+      "S_Rabinovitch",
+      "JamilAnderlini",
+      "RosieBlau",
+      "jamestareddy",
+      "abrownewsj",
+      "JoshFrydenberg",
+      "verified",
+      "CH_Events",
+      "JunckerEU",
+      "federalreserve",
+      "bankofengland",
+      "EU_Commission",
+      "ecb",
+      "WhiteHouse",
+      "AMBGoldberg",
+      "ClimateDesk",
+      "YaleClimateComm",
+      "BarackObama",
+      "Food_Tank",
+      "NobelPrize",
+      "MalalaFund",
+      "djrothkopf",
+      "ValerieAmos",
+      "JohnHeilprin",
+      "AFPManila",
+      "rschoell1",
+      "bindu_lohani",
+      "worldbankdata"
+    ],
+    "location": [
+      "null",
+      "Geneva ",
+      "Worldwide ",
+      "Earth",
+      "New York",
+      "Baltimore & Paris",
+      "Washington, DC",
+      "Global",
+      "null",
+      "Broadcasting House, London, UK",
+      "Istanbul",
+      "New York, NY",
+      "New Delhi, India",
+      "Washington, D.C.",
+      "New York",
+      "Global",
+      "Washington, DC",
+      "New York City",
+      "null",
+      "New Delhi",
+      "Manila, Philippines",
+      "Singapore",
+      "null",
+      "New York",
+      "null",
+      "Bhutan",
+      "Rome, Italy",
+      "Worldwide",
+      "London, UK",
+      "New York",
+      "Dhaka, Bangladesh",
+      "null",
+      "United Nations. New York, USA",
+      "null",
+      "null",
+      "Based in Singapore",
+      "New York",
+      "Cambridge, MA",
+      "Prague",
+      "Male' Republic of Maldives",
+      "Stockholm, Sweden",
+      "London",
+      "The World ",
+      "null",
+      "null",
+      "Manila, Philippines",
+      "null",
+      "null",
+      "null",
+      "Washington, DC",
+      "Dhaka, Bangladesh",
+      "Kathmandu, Nepal",
+      "Hong Kong",
+      "London/New York",
+      "Manila",
+      "Washington, DC",
+      "Palais des Nations Switzerland",
+      "global",
+      "Washington DC",
+      "Singapore",
+      "National Capital Region",
+      "#Manila",
+      "Washington, DC",
+      "Paris-Le Bourget",
+      "Bonn & Eschborn, Germany",
+      "null",
+      "New York, NY",
+      "Toronto, Canada",
+      "London",
+      "Philippines",
+      "null",
+      "Nashville, TN",
+      "Kathmandu",
+      "null",
+      "Geneva, Switzerland",
+      "Manila",
+      "null",
+      "Washington, DC",
+      "Vancouver, BC",
+      "Washington, D.C.",
+      "null",
+      "null",
+      "www.worldbank.org ",
+      "Kathmandu, Nepal",
+      "Philippines",
+      "Sydney, Australia",
+      "null",
+      "Frankfurt, Germany",
+      "null",
+      "New Delhi, Delhi",
+      "Manila, Philippines",
+      "Washington, D.C.",
+      "Qatar",
+      "Washington DC",
+      "Paris, France",
+      "London",
+      "London or somewhere in Asia",
+      "New York",
+      "Proud Bostonian",
+      "New York",
+      "null",
+      "Manila, Philippines",
+      " Daegu & Gyeongbuk",
+      "PATNA",
+      "Hong Kong",
+      "null",
+      "null",
+      "Songdo, Republic of Korea",
+      "null",
+      "London",
+      "Global",
+      "Paris, France",
+      "Metro Manila, the Philippines",
+      "null",
+      "Hong Kong",
+      "Beijing",
+      "Hong Kong",
+      "Washington DC",
+      "null",
+      "Bogot,Colombia",
+      "null",
+      "Singapore",
+      "null",
+      "Manila, Philippines",
+      "Global",
+      "Seoul, Korea",
+      "London",
+      "null",
+      "Makati, Philippines",
+      "New York",
+      "Bruxelles ",
+      "London",
+      "null",
+      "Worldwide",
+      "Geneva, Switzerland ",
+      "UK",
+      "Worldwide",
+      "Ottawa, Ontario",
+      "New York and Milan",
+      "Ottawa & Abbotsford",
+      "Australia",
+      "Brussels",
+      "Bethesda, MD",
+      "Hong Kong",
+      "Washington, DC",
+      "Global (HQs London/Edinburgh)",
+      "Copenhagen",
+      "Manila, Philippines",
+      "New Delhi",
+      "Worldwide",
+      "null",
+      "Geneva",
+      "Kathmandu",
+      "null",
+      "Worldwide",
+      "UNEPHQ, Nairobi, Kenya",
+      "New York",
+      "Global",
+      "Tweepsmap HQ, Toronto, Canada",
+      "New York",
+      "New York, NY",
+      "New York, NY",
+      "New York",
+      "San Francisco",
+      "Cupertino",
+      "Manila, Philippines",
+      "Manila, Philippines",
+      "NYC",
+      "Global",
+      "Bangkok, Thailand",
+      "Los Angeles, CA",
+      "Shanghai",
+      "Beijing",
+      "null",
+      "shanghai, china",
+      "null",
+      "Australia",
+      "San Francisco",
+      "London",
+      "Europe",
+      "Washington, D.C",
+      "null",
+      "Brussels, Belgium",
+      "Frankfurt",
+      "Washington, DC",
+      "Manila, Philippines",
+      "Earth",
+      "New Haven, CT",
+      "Washington, DC",
+      "New Orleans, LA",
+      "Stockholm, Sweden",
+      "RT do not equal endorsements ",
+      "Washington, DC",
+      "London, England",
+      "Bern, Switzerland",
+      "Manila",
+      "Ulaanbaatar",
+      "Kathmandu,Nepal",
+      "null"
+    ]
+  }
+];
+
+	var org_loc = data[0]["loc-lat"];
+	console.log("lat" + org_loc[0]+ " Long:"+org_loc [1]);
+	var latlng = new google.maps.LatLng(org_loc[0],org_loc[1]);
+    var map = new google.maps.Map(document.getElementById("map_canvas"),
+    {
+        zoom: 3,
+              center:latlng ,
+              mapTypeId: google.maps.MapTypeId.ROADMAP   
+    });
+	addMarker(data,latlng,map,-1);	
+	//route.push(latlng);
+	
+	var routes= [];
+	var ltng = data[0]["location_latlng"];
+    for( i in ltng){
+		if(ltng[i] == "null") {
+			console.log("Null value");
+		}else {
+			console.log(i);
+			//console.log("lat" + ltng[i][0]+ " Long:"+ ltng[i][1]);
+			 var latpo = new google.maps.LatLng(ltng[i][0],ltng[i][1]);
+			 addMarker(data,latpo, map, i);
+			 routes.push(latpo);
+			 
+			}
+ 		}	
+		for (i in routes){
+		var route = [latlng];
+		route.push(routes[i]);
+		var path = new google.maps.Polyline(
+			{
+              path: route,
+              strokeColor: "#FF0000",
+              strokeOpacity: 1.0,
+              strokeWeight: 2,	
+			  geodesic: true
+        });
+    path.setMap(map);     
+}
+}
+
+function initialize1()
+{
+var data= [
+{
+   "name": [
+       "OxfamIndonesia"
+   ],
+   "id_number": [
+       1317
+   ],
+   "loc-lat": [
+       -6.208763,
+       116.845599
+   ],
+   "url_org": [
+       "oxfamblogs.org/indonesia/"
+   ],
+   "location_latlng": [
+       [
+           51.752225,
+           -1.2583028
+       ],
+       [
+           51.752225,
+           -1.2583028
+       ],
+       [
+           37.7792768,
+           -122.4192704
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           5.9132017,
+           -73.9285517
+       ],
+       [
+           -0.4118194,
+           116.990430428822
+       ],
+       [
+           37.442156,
+           -122.1634472
+       ],
+       [
+           42.3604823,
+           -71.0595678
+       ],
+       [
+           -6.1753941,
+           106.8271826
+       ],
+       [
+           -6.1753941,
+           106.8271826
+       ],
+       [
+           47.6038321,
+           -122.3300624
+       ],
+       [
+           -6.1753941,
+           106.8271826
+       ],
+       [
+           52.2460367,
+           0.7125173
+       ],
+       "null",
+       [
+           51.6140742,
+           -0.276068600000001
+       ],
+       [
+           51.9126286,
+           -0.2068024
+       ],
+       "null",
+       [
+           55.25,
+           -2.000559
+       ],
+       [
+           54.403068,
+           -1.7374542
+       ],
+       [
+           -6.1753941,
+           106.8271826
+       ],
+       "null",
+       "null",
+       [
+           -5.1342962,
+           119.4124282
+       ],
+       [
+           -6.1753941,
+           106.8271826
+       ],
+       "null",
+       "null",
+       [
+           52.0799838,
+           4.3113461
+       ],
+       [
+           -6.22595265,
+           106.90188949921
+       ],
+       [
+           37.6304904,
+           -122.4110835
+       ],
+       [
+           37.7792768,
+           -122.4192704
+       ],
+       [
+           52.3445781,
+           -1.5809405
+       ],
+       [
+           -6.1753941,
+           106.8271826
+       ],
+       "T: -7.752448,110.4004097",
+       [
+           50.7218655,
+           -3.5318067
+       ],
+       [
+           50.7218655,
+           -3.5318067
+       ],
+       [
+           48.8565056,
+           2.3521334
+       ],
+       [
+           9.6000359,
+           7.9999721
+       ],
+       [
+           55.6867243,
+           12.5700724
+       ],
+       [
+           41.8933439,
+           12.4830718
+       ],
+       "null",
+       [
+           51.4923137,
+           -0.263818
+       ],
+       [
+           51.4923137,
+           -0.263818
+       ],
+       [
+           51.5711575,
+           -0.1486626
+       ],
+       "null",
+       [
+           -28.8166236,
+           24.991639
+       ],
+       [
+           53.3472744,
+           -2.2893187
+       ],
+       [
+           51.517403,
+           -0.127179
+       ],
+       [
+           -6.4074244,
+           106.8140193
+       ],
+       [
+           -6.4074244,
+           106.8140193
+       ],
+       [
+           -6.1753941,
+           106.8271826
+       ],
+       [
+           -6.1753941,
+           106.8271826
+       ],
+       "null",
+       [
+           53.716564,
+           -1.6363856
+       ],
+       [
+           53.5120412,
+           -2.2434612
+       ],
+       [
+           38.8949549,
+           -77.0366456
+       ],
+       "null",
+       [
+           46.2017559,
+           6.1466014
+       ],
+       [
+           56.7861112,
+           -4.1140518
+       ],
+       [
+           51.5073219,
+           -0.1276474
+       ],
+       [
+           -28.8166236,
+           24.991639
+       ],
+       [
+           55.9483544,
+           -3.1931187
+       ],
+       "null",
+       [
+           52.2626985,
+           -0.899271
+       ],
+       [
+           41.3825596,
+           2.1771353
+       ],
+       [
+           40.7305991,
+           -73.9865812
+       ],
+       [
+           40.7305991,
+           -73.9865812
+       ],
+       [
+           -6.1753941,
+           106.8271826
+       ],
+       "null",
+       "null",
+       [
+           41.8933439,
+           12.4830718
+       ],
+       "null",
+       [
+           28.6138967,
+           77.2159562
+       ],
+       [
+           51.49284665,
+           -0.255831637357488
+       ],
+       "null",
+       "null",
+       [
+           55.9274826,
+           -3.2106803
+       ],
+       [
+           55.9274826,
+           -3.2106803
+       ],
+       [
+           51.752225,
+           -1.2583028
+       ],
+       [
+           51.7558007,
+           -0.3382913
+       ],
+       [
+           53.3887105,
+           -2.9131014
+       ],
+       [
+           53.9590555,
+           -1.0815361
+       ],
+       [
+           52.9212617,
+           -1.4761491
+       ],
+       [
+           51.5073219,
+           -0.1276474
+       ],
+       [
+           52.6839126,
+           -1.8275519
+       ],
+       [
+           54.8938894,
+           -2.933471
+       ],
+       [
+           53.3727411,
+           -3.0235629
+       ],
+       [
+           53.4838773,
+           -2.2337765
+       ],
+       [
+           53.820802,
+           -1.57748693966757
+       ],
+       [
+           51.0181448,
+           -4.2064223
+       ],
+       [
+           53.4034433,
+           -2.9789069
+       ],
+       [
+           53.3689179117647,
+           -1.49702276470588
+       ],
+       [
+           51.237387,
+           -0.2059492
+       ],
+       "null",
+       [
+           51.6211442,
+           -3.9467751
+       ],
+       [
+           51.5145069,
+           -0.1219068
+       ],
+       [
+           51.46332195,
+           -2.60689428355327
+       ],
+       [
+           51.4554407,
+           -0.1001002
+       ],
+       [
+           54.09069075,
+           -1.53423028079955
+       ],
+       [
+           41.4989861,
+           -72.900658
+       ],
+       [
+           51.576297,
+           0.1823905
+       ],
+       [
+           51.4626668,
+           -2.6061315
+       ],
+       [
+           53.804873,
+           -1.4512947
+       ],
+       [
+           51.44310735,
+           -0.152068670801157
+       ],
+       [
+           51.4210189,
+           -1.728952
+       ],
+       [
+           49.4212299,
+           8.4297698
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           51.5908931,
+           -0.1425391
+       ],
+       [
+           41.8755546,
+           -87.6244212
+       ],
+       [
+           53.5120412,
+           -2.2434612
+       ],
+       [
+           -6.22595265,
+           106.90188949921
+       ],
+       [
+           51.5375786,
+           -0.9050287
+       ],
+       "null",
+       [
+           52.6367811,
+           -1.1312289
+       ],
+       [
+           51.1154581,
+           -0.1828192
+       ],
+       [
+           23.7593572,
+           90.3788136
+       ],
+       [
+           40.7305991,
+           -73.9865812
+       ],
+       "null",
+       [
+           43.7283874,
+           -79.34914869325
+       ],
+       [
+           40.7305991,
+           -73.9865812
+       ],
+       [
+           53.5120412,
+           -2.2434612
+       ],
+       [
+           43.7283874,
+           -79.34914869325
+       ],
+       [
+           36.29884975,
+           -82.3591966141095
+       ],
+       [
+           -4.7993356,
+           114.5632032
+       ],
+       [
+           -33.8548157,
+           151.2164539
+       ],
+       [
+           40.7305991,
+           -73.9865812
+       ],
+       [
+           9.0643305,
+           7.4892974
+       ],
+       [
+           36.29884975,
+           -82.3591966141095
+       ],
+       "null",
+       "null",
+       [
+           40.7305991,
+           -73.9865812
+       ],
+       [
+           40.7305991,
+           -73.9865812
+       ],
+       [
+           53.5120412,
+           -2.2434612
+       ],
+       [
+           38.8949549,
+           -77.0366456
+       ],
+       [
+           47.6038321,
+           -122.3300624
+       ],
+       [
+           40.7305991,
+           -73.9865812
+       ],
+       [
+           43.7283874,
+           -79.34914869325
+       ],
+       [
+           47.6038321,
+           -122.3300624
+       ],
+       [
+           38.8949549,
+           -77.0366456
+       ],
+       [
+           51.4587621,
+           -2.1159032
+       ],
+       "null",
+       [
+           46.2017559,
+           6.1466014
+       ],
+       [
+           40.7496292,
+           -73.9673898832459
+       ],
+       [
+           46.2017559,
+           6.1466014
+       ],
+       [
+           43.9481274,
+           -70.8270081
+       ],
+       [
+           46.2017559,
+           6.1466014
+       ],
+       [
+           46.2017559,
+           6.1466014
+       ],
+       [
+           46.2017559,
+           6.1466014
+       ],
+       "null",
+       "null",
+       [
+           40.7305991,
+           -73.9865812
+       ],
+       "null",
+       [
+           -6.1753941,
+           106.8271826
+       ],
+       "null",
+       [
+           11.5742555,
+           104.82899544331
+       ],
+       [
+           11.5742555,
+           104.82899544331
+       ],
+       [
+           -6.1753941,
+           106.8271826
+       ],
+       "null",
+       "null",
+       [
+           -6.1753941,
+           106.8271826
+       ],
+       [
+           50.6407351,
+           4.66696
+       ],
+       [
+           53.029256,
+           -2.19979100233224
+       ],
+       [
+           40.7305991,
+           -73.9865812
+       ],
+       [
+           53.5120412,
+           -2.2434612
+       ],
+       [
+           46.2017559,
+           6.1466014
+       ],
+       [
+           31.5077213,
+           34.4607415
+       ],
+       "null",
+       [
+           31.7968155,
+           35.2137815559015
+       ],
+       [
+           -6.1753941,
+           106.8271826
+       ],
+       [
+           -4.7993356,
+           114.5632032
+       ],
+       "null",
+       [
+           19.4325301,
+           -99.1332102
+       ],
+       [
+           53.6475988,
+           -3.0041751
+       ],
+       [
+           50.8220399,
+           -0.1374061
+       ],
+       [
+           51.5454689,
+           -0.0739341
+       ],
+       [
+           41.8755546,
+           -87.6244212
+       ],
+       [
+           41.8755546,
+           -87.6244212
+       ],
+       "null",
+       [
+           30.3308401,
+           71.247499
+       ],
+       [
+           51.752225,
+           -1.2583028
+       ],
+       [
+           43.7283874,
+           -79.34914869325
+       ],
+       [
+           -6.1753941,
+           106.8271826
+       ],
+       "null",
+       [
+           -6.1753941,
+           106.8271826
+       ],
+       [
+           -6.1753941,
+           106.8271826
+       ],
+       [
+           -37.8142176,
+           144.9631608
+       ],
+       "null",
+       [
+           40.7305991,
+           -73.9865812
+       ],
+       [
+           -6.22595265,
+           106.90188949921
+       ],
+       "null",
+       [
+           31.9515694,
+           35.9239625
+       ],
+       "null",
+       [
+           38.8949549,
+           -77.0366456
+       ],
+       [
+           38.8949549,
+           -77.0366456
+       ],
+       [
+           -6.1928398,
+           106.868593792648
+       ],
+       [
+           -6.1753941,
+           106.8271826
+       ],
+       [
+           -6.1753941,
+           106.8271826
+       ],
+       [
+           -4.7993356,
+           114.5632032
+       ],
+       [
+           -6.9820066,
+           108.5816064
+       ],
+       [
+           -6.1753941,
+           106.8271826
+       ],
+       [
+           -4.7993356,
+           114.5632032
+       ]
+   ],
+   "url": [
+       "None",
+       "None",
+       "http://t.co/n3clgLXKeD",
+       "http://t.co/E5VCyKLKAD",
+       "http://t.co/6lJbp4tN6C",
+       "http://t.co/KVGMTy6XvJ",
+       "http://t.co/ROQXi7dYOO",
+       "http://t.co/TfZNCZ354M",
+       "http://t.co/lZrX3uk0NQ",
+       "http://t.co/QM5IEmAhdT",
+       "http://t.co/roSxvQiGfs",
+       "http://t.co/VjezvwUg22",
+       "http://t.co/0k8thbOao6",
+       "None",
+       "https://t.co/KszJiz5JtP",
+       "https://t.co/sKHWuEBDBT",
+       "None",
+       "http://t.co/P6taZut1IF",
+       "None",
+       "http://t.co/mdkGmnfjys",
+       "None",
+       "http://t.co/bt5mfEpOdq",
+       "http://t.co/cdXcqbj1NB",
+       "http://t.co/TdDijrX4IM",
+       "None",
+       "http://t.co/2ROrYNr4mi",
+       "https://t.co/mwEV0LdgjQ",
+       "http://t.co/b3J8LS2Zqe",
+       "http://t.co/F3fLcfnBVf",
+       "http://t.co/bouC2DRuR4",
+       "http://t.co/gugiEtW0bo",
+       "http://t.co/bV62HBGMLu",
+       "http://t.co/7eblisrstG",
+       "http://t.co/0hZ9KLnkKJ",
+       "http://t.co/O2Cet32y9i",
+       "http://t.co/9q8Jpgdyn6",
+       "http://t.co/w60rIDdQv4",
+       "http://t.co/jCrZUgio8H",
+       "http://t.co/Dv3eilA6Qe",
+       "None",
+       "http://t.co/xoWSlvEroy",
+       "http://t.co/qt7mRGglE2",
+       "http://t.co/Av4TbbtI9E",
+       "http://t.co/eQzlVbG3Ob",
+       "http://t.co/M9kVDK7Ycc",
+       "https://t.co/a0FJnMSFfY",
+       "None",
+       "None",
+       "http://t.co/FHL7TJOGMp",
+       "http://t.co/sTXISGIq4w",
+       "http://t.co/EHr07QxylX",
+       "http://www.Devex.com",
+       "http://t.co/6NsRMNeXaU",
+       "http://t.co/ZCCg9heJRD",
+       "http://t.co/Bhjk2aX2M2",
+       "http://t.co/KBYrJzohgS",
+       "http://t.co/gaIPS5ujoD",
+       "http://t.co/7iaKMs3QrE",
+       "None",
+       "http://t.co/W6D0jBewHp",
+       "https://t.co/X4U5qNeP9t",
+       "None",
+       "http://t.co/LzCmrHFI8V",
+       "None",
+       "http://t.co/TuQLTiqqCp",
+       "http://t.co/Kqu5kxHrTV",
+       "http://t.co/RqYrprKizj",
+       "http://t.co/G5UPZyTWHB",
+       "http://t.co/i0rZqBhDai",
+       "http://t.co/LTVs9dXQHZ",
+       "http://t.co/2XRDRrYJ2U",
+       "http://t.co/z5zawIVZRS",
+       "https://t.co/duj82I3QsT",
+       "http://t.co/thgJSeGlVG",
+       "None",
+       "http://t.co/7NS1RYo5R1",
+       "http://t.co/qt7mRFYKfs",
+       "http://t.co/6i5CcWD1bS",
+       "http://t.co/fNiAUdxYKG",
+       "https://t.co/Syujvxyq9F",
+       "http://t.co/PepACHvbZn",
+       "None",
+       "http://t.co/r8XrFSM4f5",
+       "http://t.co/GNFgKUumS8",
+       "http://t.co/mbnvW25U4r",
+       "None",
+       "https://t.co/E62Ou8IXlQ",
+       "http://t.co/1ev3QqWKPa",
+       "None",
+       "None",
+       "http://t.co/qt7mRGgTtA",
+       "http://t.co/2YGyUH2dIr",
+       "http://t.co/KrlOYHeAqM",
+       "https://t.co/qky22xuYLp",
+       "http://t.co/stuZ5dE0GP",
+       "http://t.co/XoXe9wB0yY",
+       "http://t.co/VNc7Zr5MeP",
+       "http://t.co/qaXjnpJYA4",
+       "None",
+       "http://t.co/aTvCgkXnQB",
+       "http://t.co/6bA77AdRg6",
+       "http://t.co/qt7mRGglE2",
+       "http://t.co/RzO8iQw6Zs",
+       "http://t.co/Gq36yeOhRS",
+       "None",
+       "None",
+       "http://t.co/hYuuAcolU2",
+       "http://t.co/1oZcEaeSaO",
+       "http://t.co/8kGlJ6JIY0",
+       "http://t.co/5DwvdkaKFt",
+       "http://t.co/iHu9uieNGf",
+       "http://t.co/Bb3tBQ9dL2",
+       "http://t.co/IEta45o5pj",
+       "http://t.co/AEPfLsz18c",
+       "http://t.co/RqPmbO9X6m",
+       "http://t.co/XV1rj0dmHf",
+       "http://t.co/wiXo3QEcY8",
+       "http://t.co/SjAuucOADy",
+       "http://t.co/XVmsvUUY1q",
+       "http://t.co/S5b9KpcEXt",
+       "http://t.co/xr2WKSuXTK",
+       "http://t.co/h7tid6NpO1",
+       "http://t.co/qAtl5hSTqW",
+       "http://t.co/W1m5NYiYLh",
+       "http://t.co/gI8TIlAJHk",
+       "http://t.co/oJAPY7pbFA",
+       "http://t.co/KMQlDDGlHe",
+       "http://t.co/kpu7lGi3Dw",
+       "http://t.co/stoG6k5XGL",
+       "http://t.co/IfRWULgJ0D",
+       "http://t.co/bFyIbJ4Zxc",
+       "http://t.co/z6k4660jTa",
+       "http://t.co/O5Woad92z1",
+       "http://t.co/dtudepUWZI",
+       "http://t.co/SLtPdwtsJq",
+       "http://t.co/I6tc1PE7aC",
+       "http://t.co/R8iPutefBT",
+       "http://t.co/ypkbAudo65",
+       "http://t.co/kQoizyHwm9",
+       "http://t.co/zryx2WVM83",
+       "http://t.co/PYgBcvzlvM",
+       "http://t.co/7dSPQKcV9R",
+       "http://t.co/bIpDKUDY4v",
+       "None",
+       "http://t.co/iUrYPiPdOe",
+       "https://t.co/AHY05CTigO",
+       "http://t.co/CUpplLJOdW",
+       "http://t.co/gaZAOwrvwn",
+       "None",
+       "http://t.co/rMZUZFEb38",
+       "None",
+       "http://t.co/4ruGre13IA",
+       "http://t.co/jbYZV1Qd9G",
+       "https://t.co/PdF9nrGKi6",
+       "http://t.co/iHTCnTQsHI",
+       "http://t.co/RqYrpsB5Xv",
+       "http://t.co/o81AsRfcEp",
+       "None",
+       "None",
+       "http://t.co/wPr5uZh3Oo",
+       "http://t.co/vjzOQDySru",
+       "http://t.co/krXhNVvVXJ",
+       "http://t.co/4DTUCBsrP4",
+       "http://t.co/VvRnxjVdmo",
+       "None",
+       "http://t.co/nyx5XPaXcm",
+       "https://t.co/foK0pn3lB5",
+       "None",
+       "http://t.co/FKSOH9fEB2",
+       "None",
+       "http://t.co/E2Eodh2TQa",
+       "https://t.co/HJDZdsai4e",
+       "http://t.co/Xod6QITSoI",
+       "http://t.co/aSxogC44Oi",
+       "http://t.co/ME6yC7Dvjb",
+       "http://t.co/wYZpnv8aUr",
+       "http://t.co/8qomwYlo5u",
+       "http://t.co/5v417w0ObM",
+       "http://t.co/wBjlGJOSmF",
+       "http://t.co/v3NBKZPnYC",
+       "http://t.co/jX5UBwbHex",
+       "http://t.co/CiiA6xvel2",
+       "http://t.co/OrzxSK6ngn",
+       "http://t.co/kUHDWCHCGC",
+       "None",
+       "http://t.co/nEXYLvBYRK",
+       "None",
+       "http://t.co/kVXig4N7I1",
+       "None",
+       "http://t.co/ERmT8U5B38",
+       "None",
+       "http://t.co/p9lK6GsddP",
+       "http://t.co/VFFQkto51t",
+       "http://t.co/2ThcfB7oEB",
+       "None",
+       "http://t.co/vF2AneDFGj",
+       "http://t.co/wBbxX2IpNu",
+       "http://t.co/b88MVIljTk",
+       "http://t.co/FDfq5YLWXj",
+       "http://t.co/4UZBpq226U"
+   ],
+   "followers": [
+       "MattGrainger0",
+       "JFMagrath",
+       "Grammarly",
+       "YebSano",
+       "exposure",
+       "OfiSgumelar",
+       "ShareThis",
+       "Shareaholic",
+       "sindonewscom",
+       "SINDOnews",
+       "followerwonk",
+       "Kemdikbud_RI",
+       "OxfamBury",
+       "OxfamStonyS",
+       "OxfamEdgware",
+       "OxfamStevenage",
+       "OxfamRareBooks",
+       "OxfamHexham",
+       "OxfamRichmond",
+       "kpp_pa",
+       "OxfamKendal",
+       "KemenBUMN",
+       "agus_antara",
+       "Villagerspost",
+       "thuannt53",
+       "Alex_Verbeek",
+       "jedalegado",
+       "DNPIIndonesia",
+       "YouTube",
+       "ICT_Works",
+       "OxfamKenilworth",
+       "KITLVJakarta",
+       "kampunghalaman",
+       "OxfamMusicEXE",
+       "Barrel_On",
+       "balisajadotcom",
+       "agropreneur9ja",
+       "cgiarclimate",
+       "FAOclimate",
+       "OxfamMorley",
+       "OxfamBooksW4",
+       "OxfamEmporium",
+       "HighgateOxfam",
+       "woodgreenoxfam",
+       "AfricaGreenMedi",
+       "OxfamWithington",
+       "oxfambloomsbury",
+       "m_agungriyadi",
+       "DAIGlobal",
+       "AJIIndo",
+       "teatowelspower",
+       "devex",
+       "OxfamOnlineBTLY",
+       "GlblCtzn",
+       "voaindonesia",
+       "oxfamwestafrica",
+       "7piliers",
+       "jk_rowling",
+       "EmWatson",
+       "Jay_Naidoo",
+       "oxfammusicedin",
+       "OxfamCamden",
+       "OxfamNorthants",
+       "ivanmgarcia77",
+       "ochapolicy",
+       "theCCR",
+       "Ahok_BasukiTP",
+       "OxfamRunning",
+       "OxfamEducation",
+       "landcoalition",
+       "suaradotcom",
+       "travelflat",
+       "OxfamBoutiqueW4",
+       "ChimeforChange",
+       "menchieflores",
+       "oxfambooksEH10",
+       "oxfam_boutique",
+       "oxfambroadst",
+       "StAOxfamBooks",
+       "OxfamAllerton",
+       "OxfamPetergate",
+       "OxfamShopDerby",
+       "Climate_Shift",
+       "OxfamLichfield",
+       "oxfamcarlisle",
+       "OxfamNewFerry",
+       "OxfamOriginals",
+       "OxfamHeadingley",
+       "OxfamBideford",
+       "OxfamBoldStreet",
+       "OxfamEccyRoad",
+       "OxfamReigate",
+       "OxfamHarrogate",
+       "OxfamCastleSt",
+       "OxfamCoventGard",
+       "OxfamOnlineBris",
+       "OxBookHerneHill",
+       "OxfamSkipton",
+       "OxfamStockport",
+       "OxfamRomford",
+       "oxfamcothambook",
+       "OxfamCrossgates",
+       "OxfamBalham",
+       "OxfamBooksSN8",
+       "WTJsays",
+       "iamdomramirez",
+       "OxfamMuswellHil",
+       "CRSchicago",
+       "WFP_Media",
+       "ForkomTangguh",
+       "OxfamHenley",
+       "InfoSeJakarta",
+       "OxfamQueensRoad",
+       "OxfamCrawley",
+       "OxfaminBD",
+       "WomenintheWorld",
+       "UNAction",
+       "GlobalGoalsUN",
+       "UNGlobalPulse",
+       "mcampaign",
+       "womenadvocates",
+       "VitalVoices",
+       "jurnalindo",
+       "UNrefugees",
+       "billclinton",
+       "oxfaminnigeria",
+       "WomenforWomen",
+       "WomenUndrSiege",
+       "NobelWomen",
+       "unpublications",
+       "TwitPic",
+       "UNWomenWatch",
+       "BarackObama",
+       "BillGates",
+       "ClintonFdn",
+       "AWID",
+       "gatesfoundation",
+       "unfoundation",
+       "GoodEnergy",
+       "ID4D",
+       "WHO",
+       "UN4Youth",
+       "GlobalFund",
+       "blazing",
+       "UNAIDS",
+       "DanielZiv",
+       "reliefweb",
+       "UNFPA",
+       "Katieolamb",
+       "jimdella",
+       "AubreyBelford",
+       "metta_ds",
+       "rahung",
+       "OxfamKH",
+       "jurnalperempuan",
+       "basuki_btp",
+       "Pak_JK",
+       "SBYudhoyono",
+       "jokowi",
+       "oxfam_sol",
+       "GlobalFundWomen",
+       "UN_DPA",
+       "UN_Women",
+       "UNrightswire",
+       "ArwaMhanna",
+       "UNPeacekeeping",
+       "OxfamOPTI",
+       "bumiku1daaitv",
+       "IDberkebun",
+       "Mark_Goldring1",
+       "faomexico",
+       "FairTradeStore",
+       "annaridout",
+       "OxfamDalston",
+       "ChiOXFAMaction",
+       "oxfammexico",
+       "OxfamBrasil",
+       "OxfaminPakistan",
+       "oxfamgbpolicy",
+       "AmnestyOnline",
+       "infojakarta",
+       "jakartagoid",
+       "BPBDJakarta",
+       "GustonDKI",
+       "Hohenboken",
+       "OxfamLondonSE",
+       "AngelaCorbalan",
+       "KonsumsiPangan",
+       "OxfamonAvon",
+       "ECHO_MiddleEast",
+       "oxfamseminar",
+       "WorldBank",
+       "UNDP",
+       "BNPB_Indonesia",
+       "musdahmulia",
+       "YFMovement",
+       "Antara_LKBN",
+       "bbMKG2",
+       "KontanNews",
+       "infoBMKG"
+   ],
+   "location": [
+       "Oxford, UK",
+       "Oxford, UK",
+       "San Francisco",
+       "Philippines",
+       "San Francisco & Berlin",
+       "di jagat Raya",
+       "Palo Alto, CA",
+       "Boston, MA",
+       "Jakarta",
+       "Jakarta Pusat, DKI Jakarta",
+       "Seattle, WA, USA",
+       "Jakarta",
+       "Bury",
+       "null",
+       "HA8 7JS",
+       "Old Town, Stevenage ",
+       "null",
+       "Northumberland",
+       "Richmond, North Yorkshire",
+       "Jakarta",
+       "null",
+       "Jakarta Pusat, DKI Jakarta",
+       "Makassar, South Celebes",
+       "Jakarta",
+       "null",
+       "The Hague / Stockholm",
+       "The Hague, South Holland",
+       "DKI Jakarta, Indonesia",
+       "San Bruno, CA",
+       "San Francisco, CA, USA",
+       "41 Abbey End, Kenilworth",
+       "Jakarta",
+       "T: -7.752448,110.4004097",
+       "97 SOUTH ST, EXETER, DEVON, UK",
+       "Hoboken, NJ and Beyond",
+       "bali",
+       "Nigeria",
+       "Copenhagen",
+       "Rome, Italy",
+       "null",
+       "Chiswick, London",
+       "8/10 OLDHAM ST, MCR, M1 1JQ",
+       "Highgate, London",
+       "null",
+       "South Africa",
+       "465 Wilmslow Road, Manchester",
+       "12 Bloomsbury Street, WC1B 3QA",
+       "Depok, Indonesia",
+       "Over 70 countries worldwide",
+       "Jakarta, Indonesia",
+       "Jakarta",
+       "null",
+       "Batley",
+       "Worldwide ",
+       "Washington, DC",
+       "null",
+       "Geneva, Switzerland",
+       "Scotland",
+       "London",
+       "South Africa",
+       "Edinburgh, UK",
+       "null",
+       "Kingsthorpe, Northampton",
+       "Barcelona",
+       "New York",
+       "New York, NY",
+       "Jakarta - Indonesia",
+       "null",
+       "null",
+       "Rome",
+       "null",
+       "New Delhi",
+       "190 Chiswick High Rd",
+       "null",
+       "null",
+       "Morningside, Edinburgh",
+       "34 St Marys Street, Cardiff",
+       "oxford, UK",
+       "Catherine Street, St Albans",
+       "Allerton Road, Liverpool",
+       "York",
+       "Derby",
+       "London, UK.",
+       "16 & 32 Market St, Lichfield",
+       "17 Bank St, Carlisle, Cumbria",
+       "62 Bebington Road, New Ferry",
+       "Oldham St, Manchester",
+       "45/47 Otley Rd, LS6 3AB",
+       "Bideford, England",
+       "35/37 Bold Street, Liverpool",
+       "531 Ecclesall Rd, Sheffield",
+       "Reigate, Surrey, UK",
+       "null",
+       "Swansea, UK",
+       "23 Drury Lane, London WC2B 5RH",
+       "62 Cotham Hill, Bristol, UK",
+       "Herne Hill, London",
+       "North Yorkshire, UK",
+       "Cheshire",
+       "82 South St, Romford RM1 1RX",
+       "Cotham Hill, Bristol",
+       "crossgates,Leeds, UK",
+       "Balham, London",
+       "Marlborough, Wiltshire",
+       "Asia Pacific",
+       "Philippines",
+       "233 Muswell Hill Broadway N10",
+       "Chicago, Illinois",
+       "WorldWide",
+       "DKI Jakarta",
+       "Henley-on-Thames",
+       "null",
+       "Leicester",
+       "35 Queensway Crawley",
+       "Dhaka, Bangladesh ",
+       "New York, NY",
+       "null",
+       "Global",
+       "New York, NY",
+       "Worldwide",
+       "Global",
+       "Washington, D.C. ",
+       "Indonesia",
+       "Sydney, Australia",
+       "New York, NY",
+       "Abuja, Nigeria",
+       "Washington, D.C.",
+       "null",
+       "null",
+       "New York, NY",
+       "Delivering your photos",
+       "Worldwide",
+       "Washington, DC",
+       "Seattle, WA",
+       "New York",
+       "Global",
+       "Seattle, Washington",
+       "Washington, DC",
+       "Chippenham, England",
+       "null",
+       "Geneva, Switzerland",
+       "United Nations, New York",
+       "Geneva, Switzerland",
+       "Oxford via Boston",
+       "Geneva, Switzerland",
+       "Ubud & Jakarta, Indonesia",
+       "Bangkok, Nairobi, New York",
+       "null",
+       "null",
+       "New York, New York",
+       "null",
+       "Jakarta",
+       "null",
+       "Phnom Penh, Cambodia ",
+       "Jl. Lontar No.12, Setiabudi",
+       "Jakarta",
+       "null",
+       "null",
+       "Jakarta",
+       "Belgium",
+       "International",
+       "New York",
+       "Worldwide",
+       "Geneva, Switzerland",
+       "Gaza City",
+       "null",
+       "Jerusalem",
+       "Jakarta",
+       "Indonesia",
+       "null",
+       "Mexico City",
+       "Southport, England.",
+       "Brighton",
+       "Dalston, London",
+       "Chicago, Illinois, USA",
+       "Mxico D.F.",
+       "null",
+       "Pakistan",
+       "Oxford, UK",
+       "Global",
+       "Jakarta, Indonesia",
+       "null",
+       "Jakarta indonesia",
+       "Jakarta, Indonesia 19062014",
+       "Melbourne",
+       "null",
+       "New York, NY",
+       "DKI Jakarta, Indonesia",
+       "null",
+       "Amman, Jordan",
+       "null",
+       "Washington, DC",
+       "177 countries & territories",
+       "Graha BNPB",
+       "Jakarta",
+       "Urban-rural, Indonesia ",
+       "Indonesia",
+       "Ciputat -  Indonesia",
+       "Jakarta, Indonesia",
+       "Indonesia"
+   ]
+}
+];
+
+	var org_loc = data[0]["loc-lat"];
+	console.log("lat" + org_loc[0]+ " Long:"+org_loc [1]);
+	var latlng = new google.maps.LatLng(org_loc[0],org_loc[1]);
+    var map = new google.maps.Map(document.getElementById("map_canvas"),
+    {
+        zoom: 3,
+              center:latlng ,
+              mapTypeId: google.maps.MapTypeId.ROADMAP   
+    });
+	addMarker(data,latlng,map,-1);	
+	//route.push(latlng);
+	
+	var routes= [];
+	var ltng = data[0]["location_latlng"];
+    for( i in ltng){
+		if(ltng[i] == "null") {
+			console.log("Null value");
+		}else {
+			console.log(i);
+			//console.log("lat" + ltng[i][0]+ " Long:"+ ltng[i][1]);
+			 var latpo = new google.maps.LatLng(ltng[i][0],ltng[i][1]);
+			 addMarker(data,latpo, map, i);
+			 routes.push(latpo);
+			 
+			}
+ 		}	
+		for (i in routes){
+		var route = [latlng];
+		route.push(routes[i]);
+		var path = new google.maps.Polyline(
+			{
+              path: route,
+              strokeColor: "#FF0000",
+              strokeOpacity: 1.0,
+              strokeWeight: 2,	
+			  geodesic: true
+        });
+    path.setMap(map);     
+}
+}
+
+function initialize2()
+{
+var data = [
+  {
+    "name": [
+      "WHOPhilippines"
+    ],
+    "id_number": [
+      44116
+    ],
+	"loc-lat" : [
+	16.599512,
+       120.98422
+	],
+	"url_org" : [
+	"http://t.co/s7fecNd6my"
+	],
+    "location_latlng": [
+       [
+           14.5906216,
+           120.9799696
+       ],
+       [
+           14.5906216,
+           120.9799696
+       ],
+       [
+           10.979932,
+           -74.7957384
+       ],
+       "null",
+       [
+           32.7762719,
+           -96.7968558
+       ],
+       "null",
+       "null",
+       [
+           14.5906216,
+           120.9799696
+       ],
+       [
+           14.5906216,
+           120.9799696
+       ],
+       "null",
+       "null",
+       "null",
+       [
+           14.5906216,
+           120.9799696
+       ],
+       [
+           14.5437592,
+           120.9954657
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       "null",
+       [
+           14.6509905,
+           121.0486155
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       "null",
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       "null",
+       "null",
+       [
+           14.5906216,
+           120.9799696
+       ],
+       "null",
+       [
+           15.6356088,
+           -89.8988087
+       ],
+       [
+           15.6356088,
+           -89.8988087
+       ],
+       [
+           15.6356088,
+           -89.8988087
+       ],
+       [
+           47.2520154,
+           16.8294953
+       ],
+       [
+           -34.9059039,
+           -56.1913569
+       ],
+       "null",
+       [
+           36.29884975,
+           -82.3591966141095
+       ],
+       [
+           -12,
+           -76.833333
+       ],
+       [
+           34.5197058,
+           69.1624302
+       ],
+       [
+           -16.495647,
+           -68.133542
+       ],
+       [
+           -16.495647,
+           -68.133542
+       ],
+       [
+           5.5600141,
+           -0.2057437
+       ],
+       [
+           47.6038321,
+           -122.3300624
+       ],
+       [
+           33.8750629,
+           35.843409
+       ],
+       [
+           54.7023545,
+           -3.2765753
+       ],
+       [
+           54.7023545,
+           -3.2765753
+       ],
+       [
+           54.7023545,
+           -3.2765753
+       ],
+       [
+           14.5906216,
+           120.9799696
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           14.5906216,
+           120.9799696
+       ],
+       "null",
+       "null",
+       [
+           14.5906216,
+           120.9799696
+       ],
+       "null",
+       [
+           10.2116702,
+           38.6521203
+       ],
+       "null",
+       [
+           47.6038321,
+           -122.3300624
+       ],
+       [
+           46.2017559,
+           6.1466014
+       ],
+       "null",
+       [
+           14.5669327,
+           121.039315543127
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           14.4165695,
+           121.0417969
+       ],
+       [
+           14.5906216,
+           120.9799696
+       ],
+       "null",
+       [
+           14.6509905,
+           121.0486155
+       ],
+       [
+           14.5906216,
+           120.9799696
+       ],
+       [
+           14.5906216,
+           120.9799696
+       ],
+       [
+           14.5906216,
+           120.9799696
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           14.5906216,
+           120.9799696
+       ],
+       [
+           14.5906216,
+           120.9799696
+       ],
+       [
+           40.7305991,
+           -73.9865812
+       ],
+       [
+           28.6138967,
+           77.2159562
+       ],
+       [
+           43.7283874,
+           -79.34914869325
+       ],
+       [
+           38.8949549,
+           -77.0366456
+       ],
+       "null",
+       [
+           14.5906216,
+           120.9799696
+       ],
+       "null",
+       [
+           14.6481727,
+           121.0315073
+       ],
+       [
+           10.45,
+           123.84
+       ],
+       [
+           10.3090298,
+           123.8930839
+       ],
+       [
+           -29.6039267,
+           28.3350193
+       ],
+       [
+           31.9515694,
+           35.9239625
+       ],
+       [
+           40.7305991,
+           -73.9865812
+       ],
+       [
+           51.5073219,
+           -0.1276474
+       ],
+       [
+           14.5906216,
+           120.9799696
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           14.654084,
+           121.0476307
+       ],
+       [
+           14.5774598,
+           121.0334694
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           14.5906216,
+           120.9799696
+       ],
+       [
+           14.5906216,
+           120.9799696
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           14.5906216,
+           120.9799696
+       ],
+       [
+           14.6065178,
+           121.063744243525
+       ],
+       [
+           14.6065178,
+           121.063744243525
+       ],
+       [
+           14.5669327,
+           121.039315543127
+       ],
+       [
+           53.5120412,
+           -2.2434612
+       ],
+       [
+           14.6509905,
+           121.0486155
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           14.6509905,
+           121.0486155
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           14.5906216,
+           120.9799696
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           -33.8548157,
+           151.2164539
+       ],
+       [
+           51.5073219,
+           -0.1276474
+       ],
+       [
+           14.5906216,
+           120.9799696
+       ],
+       [
+           1.2904527,
+           103.852038
+       ],
+       [
+           14.5906216,
+           120.9799696
+       ],
+       [
+           40.7305991,
+           -73.9865812
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           14.5906216,
+           120.9799696
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           52.5560536,
+           1.1835283
+       ],
+       [
+           37.5666791,
+           126.9782914
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           55.7516335,
+           37.6187042
+       ],
+       [
+           59.9132694,
+           10.7391112
+       ],
+       [
+           64.574131,
+           11.5270102892405
+       ],
+       [
+           43.7311966,
+           7.41964
+       ],
+       [
+           36.5748441,
+           139.2394179
+       ],
+       [
+           41.8933439,
+           12.4830718
+       ],
+       "null",
+       [
+           -27,
+           133
+       ],
+       [
+           61.0666922,
+           -107.9917071
+       ],
+       [
+           34.2255804,
+           139.294774527387
+       ],
+       [
+           -22.5530385,
+           17.0543787941499
+       ],
+       [
+           51.5173065,
+           -0.1105803
+       ],
+       [
+           47.6038321,
+           -122.3300624
+       ],
+       [
+           34.2255804,
+           139.294774527387
+       ],
+       [
+           14.0358951,
+           -0.0332189546118462
+       ],
+       [
+           14.5906216,
+           120.9799696
+       ],
+       [
+           46.2017559,
+           6.1466014
+       ],
+       [
+           51.5073219,
+           -0.1276474
+       ],
+       [
+           46.22653525,
+           6.14038732078338
+       ],
+       [
+           46.22653525,
+           6.14038732078338
+       ],
+       "null",
+       [
+           8.6400349,
+           -11.8400269
+       ],
+       "null",
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           14.5906216,
+           120.9799696
+       ],
+       [
+           32.7876012,
+           -79.9402728
+       ],
+       [
+           32.7876012,
+           -79.9402728
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           37.5385087,
+           -77.4342799
+       ],
+       [
+           53.5120412,
+           -2.2434612
+       ],
+       [
+           40.4167047,
+           -3.7035825
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           51.5073219,
+           -0.1276474
+       ],
+       [
+           3.1387103,
+           101.682099528432
+       ],
+       [
+           48.8565056,
+           2.3521334
+       ],
+       [
+           54.7023545,
+           -3.2765753
+       ],
+       [
+           43.7283874,
+           -79.34914869325
+       ],
+       [
+           14.6509905,
+           121.0486155
+       ],
+       [
+           45.4815688,
+           -122.524187467007
+       ],
+       [
+           41.2943069,
+           -73.37486
+       ],
+       [
+           41.2943069,
+           -73.37486
+       ],
+       [
+           53.029256,
+           -2.19979100233224
+       ],
+       [
+           36.216795,
+           -81.6745517
+       ],
+       [
+           10.45,
+           123.84
+       ],
+       [
+           61.0666922,
+           -107.9917071
+       ],
+       [
+           53.5120412,
+           -2.2434612
+       ],
+       [
+           38.8949549,
+           -77.0366456
+       ],
+       [
+           38.8949549,
+           -77.0366456
+       ],
+       [
+           51.752225,
+           -1.2583028
+       ],
+       [
+           48.8565056,
+           2.3521334
+       ],
+       [
+           43.7283874,
+           -79.34914869325
+       ],
+       [
+           43.7283874,
+           -79.34914869325
+       ],
+       [
+           53.3497645,
+           -6.2602732
+       ],
+       [
+           43.6529206,
+           -79.3849008
+       ],
+       [
+           49.8158683,
+           6.1296751
+       ],
+       [
+           50.84579925,
+           4.35585403115296
+       ],
+       [
+           33.7490987,
+           -84.3901849
+       ],
+       [
+           -6.1753941,
+           106.8271826
+       ],
+       [
+           48.8565056,
+           2.3521334
+       ],
+       [
+           51.5073219,
+           -0.1276474
+       ],
+       "null",
+       [
+           14.0358951,
+           -0.0332189546118462
+       ],
+       "null",
+       [
+           37.1232245,
+           -78.4927721
+       ],
+       [
+           27.96654565,
+           -82.5689613706709
+       ],
+       [
+           12.7503486,
+           122.7312101
+       ],
+       [
+           54.7023545,
+           -3.2765753
+       ],
+       [
+           40.7305991,
+           -73.9865812
+       ],
+       [
+           36.29884975,
+           -82.3591966141095
+       ],
+       [
+           53.5120412,
+           -2.2434612
+       ],
+       "null",
+       "T: 34.018689,-118.483186",
+       [
+           46.2017559,
+           6.1466014
+       ],
+       [
+           46.2017559,
+           6.1466014
+       ],
+       [
+           46.2017559,
+           6.1466014
+       ],
+       [
+           51.5073219,
+           -0.1276474
+       ],
+       [
+           14.5906216,
+           120.9799696
+       ],
+       [
+           14.5906216,
+           120.9799696
+       ],
+       [
+           46.2017559,
+           6.1466014
+       ],
+       [
+           51.5073219,
+           -0.1276474
+       ],
+       [
+           14.565196,
+           121.028315214537
+       ],
+       [
+           14.565196,
+           121.028315214537
+       ]
+   ],
+   "url": [
+       "http://t.co/IZJYnFxspq",
+       "http://t.co/uCqX8BJSmI",
+       "http://t.co/lL3bUtNcA1",
+       "http://t.co/KqIvCWX3nG",
+       "http://t.co/BCShbTF4vg",
+       "http://t.co/fxFJjKX30d",
+       "None",
+       "http://t.co/m6dvlL7KPB",
+       "http://t.co/Bj3sz4aIFA",
+       "None",
+       "None",
+       "http://t.co/mNT2ehDCaF",
+       "http://t.co/v4UyM4Tn8S",
+       "http://t.co/kZM7XAJ2ah",
+       "http://t.co/RPNtsnYkt2",
+       "http://t.co/W3bSMdOwf8",
+       "http://t.co/BOmfSAbbC2",
+       "http://t.co/phBfR9BG3p",
+       "http://t.co/gD1QztVmEZ",
+       "http://t.co/zLk5DtcoX4",
+       "http://t.co/9PyjGpnebT",
+       "http://t.co/hcBiUeVjqk",
+       "http://t.co/M8viAocGXz",
+       "http://t.co/XQGEOrn4zp",
+       "http://t.co/HJTGpdG263",
+       "None",
+       "http://t.co/pNdtjOy2da",
+       "http://t.co/A0FRuBeg8Y",
+       "http://t.co/QM4MkRJob9",
+       "http://t.co/HImHrIaYw1",
+       "http://t.co/tfOSkGB9QU",
+       "http://t.co/KIFBsMHavQ",
+       "http://t.co/nPiXAengrw",
+       "http://t.co/sgm0kNzLeQ",
+       "http://t.co/sRlBdSDDmV",
+       "http://t.co/ehPUmZZfRC",
+       "http://t.co/En5erhGhyG",
+       "https://t.co/PIs5TivOg7",
+       "http://t.co/O9Fq70s9UB",
+       "http://t.co/XQokdwm7jo",
+       "http://t.co/qZzk7472BD",
+       "http://t.co/OgTTmzcjNn",
+       "None",
+       "http://t.co/SgKW0m2Cn3",
+       "http://t.co/55Ts8keer2",
+       "http://t.co/NHpGHGfnFq",
+       "None",
+       "None",
+       "None",
+       "None",
+       "http://t.co/Hbvsm47yyR",
+       "http://t.co/zvVUfargRh",
+       "http://t.co/GeAGGUL7JZ",
+       "http://t.co/NfFAtwrwof",
+       "None",
+       "http://t.co/gS2sJnAjrq",
+       "http://t.co/mjx5C51Z0E",
+       "http://t.co/DcFSeEHe9b",
+       "None",
+       "None",
+       "http://t.co/i23sCRk4AL",
+       "http://t.co/DJrHgc3ua0",
+       "http://t.co/BbwI1hL49g",
+       "http://t.co/tz2uMgi2kb",
+       "http://t.co/YQPQvuNxA7",
+       "http://t.co/o2pH9fEYfc",
+       "http://t.co/IYwuyty6K9",
+       "http://t.co/lVWlKbMowy",
+       "http://t.co/fMkNxmQNIB",
+       "http://t.co/aAv4zKAioA",
+       "http://t.co/fGZ48fFpFg",
+       "None",
+       "None",
+       "None",
+       "http://t.co/BTbN4AJEPH",
+       "http://t.co/uD94bwFgiv",
+       "http://t.co/y49zF8OwIq",
+       "None",
+       "http://t.co/4yMYZoLY",
+       "http://t.co/g6NUIk5R2Y",
+       "http://t.co/Z0ZLjFC2Ps",
+       "http://t.co/HZedzVVocn",
+       "http://t.co/Z8yDzTyS5H",
+       "None",
+       "http://t.co/5wFlTY4KbA",
+       "http://t.co/EbQYw2Xzo8",
+       "http://t.co/t4ImQYklSU",
+       "http://t.co/ml34b0gh6B",
+       "http://t.co/eMGtXiCIEh",
+       "http://t.co/RlrYWVwrXG",
+       "http://t.co/AuJfvUvXHL",
+       "http://t.co/vLOPGRJznk",
+       "http://t.co/u7y8m94S2y",
+       "http://t.co/ndXpcANWvv",
+       "http://t.co/yylJjxwSu7",
+       "http://t.co/i2bNnyVRp5",
+       "http://t.co/6AdkBbvxxl",
+       "http://t.co/6XLBZ97icY",
+       "http://t.co/SsKDJt0eVi",
+       "http://t.co/06Fo3ebdIW",
+       "http://t.co/aUfgu1nFpk",
+       "http://t.co/I0jnaKDigz",
+       "http://t.co/HoQpW6Mef1",
+       "http://t.co/tz2uMgi2kb",
+       "http://t.co/W1m5NYiYLh",
+       "http://t.co/P76c3dYEj0",
+       "http://t.co/reA5ijMI6K",
+       "http://t.co/jrwYE6OxxY",
+       "http://t.co/9oAahmL9VU",
+       "http://t.co/GhhR6Q2Qmq",
+       "http://t.co/kFpDI57mJu",
+       "http://t.co/Pd2k1Monx7",
+       "https://t.co/9ThnCFhy0s",
+       "https://t.co/pijVDvGsaN",
+       "https://t.co/Qhs52rJklC",
+       "http://t.co/HmpichLy8M",
+       "http://t.co/Rm6DkmkhVB",
+       "http://t.co/QNrz7FcIwj",
+       "http://t.co/aEWvWj1OzZ",
+       "http://t.co/UEg0mCyD",
+       "http://t.co/mn1G4AI4wh",
+       "http://t.co/MkZ6wPUyuH",
+       "http://t.co/52uAt7slGo",
+       "http://t.co/YXBV5ql82b",
+       "http://t.co/5ADCNU2THK",
+       "http://t.co/wUvWePFG94",
+       "http://t.co/HokZs4RGKr",
+       "http://t.co/zotlclFlm6",
+       "http://t.co/NwETK1nW2D",
+       "http://t.co/R8iPutefBT",
+       "http://t.co/KZjqNeBliT",
+       "http://t.co/LZ45wEIIQs",
+       "http://t.co/ibjha13tlH",
+       "http://t.co/B6zdVWKsyo",
+       "http://t.co/hEg6VHPEmL",
+       "http://t.co/0lAlslVJLC",
+       "http://t.co/CUpplLJOdW",
+       "https://t.co/WPOUbSTbC3",
+       "None",
+       "None",
+       "http://t.co/A0nEVmvNKm",
+       "http://t.co/LQiglXbCG1",
+       "http://t.co/9LMfkpJHb8",
+       "http://t.co/bFyIbJ4Zxc",
+       "http://t.co/JYClgHQFI8",
+       "https://t.co/FVeuBCsXJp",
+       "http://t.co/FUvpSHcwSR",
+       "http://t.co/eRFLHMmIdM",
+       "http://t.co/kM5P4bvDI8",
+       "http://t.co/gNSxg6IVfS",
+       "http://t.co/3RQo00VmLD",
+       "http://t.co/hjgOyRp3wA",
+       "http://t.co/bVwMRQfxKS",
+       "http://t.co/cHZh7HvDXJ",
+       "http://t.co/O7EOtkiq99",
+       "http://t.co/QLXZ432S8T",
+       "http://t.co/V6oAEtmjrV",
+       "http://t.co/LCXm6oknUd",
+       "http://t.co/Kwd3TuPER4",
+       "http://t.co/Ko3Sg1HP0Z",
+       "http://t.co/1JyC70AibK",
+       "http://t.co/kjftEuVBsu",
+       "http://t.co/YSyzdwqT9n",
+       "http://t.co/RovhfsmTyA",
+       "http://t.co/VFFQkto51t",
+       "http://t.co/qt7mRGgTtA",
+       "http://t.co/Yxp8jlV2",
+       "http://t.co/Bmubh6Grnh",
+       "http://t.co/0Lwy2nIyzk",
+       "http://t.co/OrwaAdSLPL",
+       "http://t.co/4dxA51VGDE",
+       "http://t.co/EYAYmHUVi7",
+       "http://t.co/t287yK7ew3",
+       "http://t.co/UopAK5lTuQ",
+       "http://t.co/xS8ii5uxyf",
+       "http://t.co/7jxcnB2ZYC",
+       "http://t.co/4LfXi3hybJ",
+       "http://t.co/805bt2LdRQ",
+       "http://t.co/XWHw5QThhA",
+       "http://t.co/gaZAOwrvwn",
+       "http://t.co/iP6a280FP3",
+       "http://t.co/iaf4DIp8xy",
+       "http://t.co/F5AvMjJZTX",
+       "http://t.co/EGbWiRctsB",
+       "http://t.co/yj5qvnuRFO",
+       "http://t.co/wEJzJAAGVG",
+       "http://t.co/AxkZboE1IV",
+       "http://t.co/0LwTLKjfZ9",
+       "http://t.co/umQHpd9S3A",
+       "http://t.co/umDqMTvs4i",
+       "http://t.co/px4841RbHl",
+       "http://t.co/mFD2HDLOUM",
+       "http://t.co/b24ot0paO6",
+       "http://t.co/uMOkAQCwB9",
+       "http://t.co/hQvVuYFdjp",
+       "http://t.co/rrdR2p9IAT",
+       "http://t.co/vBzl7LOaso",
+       "http://t.co/xll8fPl2uM",
+       "None"
+   ],
+   "followers": [
+       "ConEspManila",
+       "CFSI_rebuilds",
+       "shakira",
+       "taylorswift13",
+       "ddlovato",
+       "katyperry",
+       "DrAlaAlwan",
+       "ADB_HQ",
+       "WorldBankAsia",
+       "Direct2Health",
+       "EmbEspFilipinas",
+       "cnnphilippines",
+       "DOJPH",
+       "senatePH",
+       "PIANewsDesk",
+       "PIAalerts",
+       "DENR_Official",
+       "DOST_NCR",
+       "oxfamph",
+       "IOM_Philippines",
+       "UNHCRPh",
+       "UNFPAPhils",
+       "davidtalby",
+       "NiliMajumder",
+       "htechmom",
+       "opsomschile",
+       "OPSGuate",
+       "Ops_Paraguay",
+       "OPSECU",
+       "OPSOMS_Col",
+       "opsomsuruguay",
+       "OPSOMS_Honduras",
+       "PAHOdisasters",
+       "OPSOMS_Per",
+       "WHOAfghanistan",
+       "OPSOMSBolivia",
+       "helgetb",
+       "UNMEER",
+       "simplymeasured",
+       "AJEMLebanon",
+       "PlanUK",
+       "dinkysunflower",
+       "rubyresponse",
+       "dawende",
+       "Abi_Valte",
+       "alexisbromero",
+       "nikkodizon",
+       "carvajal_nancy",
+       "IanEsguerra",
+       "MayenJaymalin",
+       "WHOEthiopia",
+       "hrw",
+       "gateshealth",
+       "ICRC",
+       "benjamindlane",
+       "noynoyaquino",
+       "pandayancomph",
+       "RITMPH",
+       "ayalowe",
+       "atomaraullo",
+       "jeegeronimo",
+       "manila_bulletin",
+       "cesdrilon",
+       "patevangelista",
+       "maria_ressa",
+       "Teddybird",
+       "WHOMaldives",
+       "WSJhealth",
+       "WHOSEARO",
+       "grp_resilience",
+       "PHIGlobalHealth",
+       "Howieseverino",
+       "newshound16",
+       "SunStarDavao",
+       "SunStarBaguio",
+       "sunstarcebu",
+       "sunstaronline",
+       "WHOLesotho",
+       "WHOJordan",
+       "AliceParkNY",
+       "hpg_odi",
+       "RTVMalacanang",
+       "TVPatrol",
+       "shecrisostomo",
+       "PIA_NCR",
+       "News5AKSYON",
+       "GMANewsOnline",
+       "gmanews",
+       "PhilippineStar",
+       "inquirerdotnet",
+       "govph",
+       "TheManilaTimes",
+       "giasison",
+       "NDRRMC_OpCen",
+       "iskomoreno",
+       "MMDA",
+       "Hep_Alliance",
+       "marvicleonen",
+       "piacayetano",
+       "dost_pagasa",
+       "PlanPhilippines",
+       "officialdohgov",
+       "interaksyon",
+       "rapplerdotcom",
+       "UNrefugees",
+       "end_svc",
+       "AusAmbPH",
+       "MartinSoong",
+       "usembassymanila",
+       "WSJ",
+       "senmiriam",
+       "OPAPP_peace",
+       "newstogoGNTV",
+       "iamkarendavila",
+       "ExtremisTech",
+       "koreanet",
+       "CanEmbPH",
+       "GovernmentRF",
+       "noradno",
+       "NorwayMFA",
+       "GvtMonaco",
+       "oda_korea",
+       "ItalyMFA",
+       "UNCERF",
+       "dfat",
+       "CanadaFP",
+       "MofaJapan_en",
+       "WHONAMIBIA",
+       "MSF",
+       "gatesfoundation",
+       "jica_direct_en",
+       "HelenClarkUNDP",
+       "USAID_Manila",
+       "StopTB",
+       "ValerieAmos",
+       "UNGeneva",
+       "reliefweb",
+       "ShelterCluster",
+       "nicorobot",
+       "JodiStaMaria",
+       "ANCALERTS",
+       "rockedradio",
+       "noaheverett",
+       "TwitPic",
+       "OCHAPhilippines",
+       "ChildFund",
+       "AmeriCares",
+       "AECID_es",
+       "AECIDFilipinas",
+       "Muslim_Aid",
+       "MERCYMalaysia",
+       "MdM_France",
+       "IslamicHelp",
+       "HelpAge",
+       "dswdserves",
+       "medicalteams",
+       "SavetheChildren",
+       "MSF_Suisse",
+       "ActionAid",
+       "SamaritansPurse",
+       "gloryreborn",
+       "CMATeams",
+       "WFP",
+       "theOFDA",
+       "UNDP",
+       "oxfamgb",
+       "MSF_france",
+       "Internews",
+       "GoodNeighbors",
+       "GOAL_Global",
+       "globalmedicdmgf",
+       "emergency_lu",
+       "eu_echo",
+       "CARE",
+       "ASEAN",
+       "ACTED",
+       "WorldVision",
+       "USAID",
+       "UNICEF",
+       "UNFPA",
+       "projecthopeorg",
+       "PlanGlobal",
+       "philredcross",
+       "PHE_uk",
+       "MSF_USA",
+       "jica_usa",
+       "theIRC",
+       "theIOM",
+       "IMC_Worldwide",
+       "ilo",
+       "Federation",
+       "HI_UnitedStates",
+       "DFID_UK",
+       "DOHgovph",
+       "DZMMTeleRadyo",
+       "irinnews",
+       "BBCBreaking",
+       "PhilMedObserver",
+       "DrOliverCris"
+   ],
+   "location": [
+       "Manila",
+       "Manila, Philippines",
+       "Barranquilla",
+       "null",
+       "DALLAS/LA",
+       "null",
+       "null",
+       "Manila, Philippines",
+       "East Asia and Pacific region",
+       "null",
+       "null",
+       "null",
+       "Manila, Philippines",
+       "Pasay City, Philippines",
+       "Philippines ",
+       "null",
+       "Quezon City",
+       "Philippines",
+       "Philippines",
+       "null",
+       "Philippines",
+       "Philippines",
+       "null",
+       "null",
+       "Manila, Philippines",
+       "null",
+       "Guatemala",
+       "Avda. Mcal. Lpez 957 Asuncin",
+       "OPS/OMS Ecuador",
+       "Bogot",
+       "Montevideo, Uruguay ",
+       "null",
+       "Washington, D.C.",
+       "Lima, Peru",
+       "Kabul, Afghanistan",
+       "La Paz, Bolivia",
+       "Eidsvoll og Oslo",
+       "Accra, Ghana",
+       "Seattle, WA",
+       "Lebanon",
+       "UK",
+       "www.dswd.gov.ph",
+       "NDRRMC Camp Aguinaldo, QC",
+       "Manila, Philippines",
+       "Philippines",
+       "Manila",
+       "null",
+       "null",
+       "Manila",
+       "null",
+       "Ethiopia",
+       "null",
+       "Seattle, WA",
+       "Geneva",
+       "null",
+       "Metro Manila, Philippines",
+       "Philippines",
+       "Alabang, Muntinlupa, PH",
+       "Manila, Philippines",
+       "null",
+       "Quezon City",
+       "Manila, Philippines",
+       "Manila",
+       "Manila, Philippines",
+       "Philippines",
+       "Manila, Philippines",
+       "6th Floor, Roashanee Building ",
+       "New York, NY",
+       "New Delhi, India",
+       "Global",
+       "Washington, DC",
+       "null",
+       "Manila",
+       "null",
+       "Baguio City, Philippines",
+       "Cebu, Philippines",
+       "Cebu City, Philippines",
+       "Lesotho",
+       "Amman, Jordan",
+       "New York NY",
+       "London, UK",
+       "Manila, Philippines",
+       "Philippines",
+       "Philippines",
+       "Visayas Avenue, Quezon City",
+       "Mandaluyong City, Philippines",
+       "Philippines",
+       "Philippines",
+       "Philippines",
+       "Manila, Philippines",
+       "Manila, Philippines",
+       "Philippines",
+       "Manila, Philippines",
+       "Camp Aguinaldo, Quezon City",
+       "tundo, maynila philippines",
+       "Metro Manila",
+       "Worldwide",
+       "Quezon City, Philippines",
+       "Philippines",
+       "Quezon City, PHILIPPINES",
+       "Philippines",
+       "Manila",
+       "Philippines",
+       "Philippines",
+       "Sydney, Australia",
+       "London",
+       "Manila, Philippines",
+       "Singapore",
+       "Manila, Philippines",
+       "New York, NY",
+       "Philippines",
+       "Philippines",
+       "Manila, Philippines",
+       "Philippines",
+       "Hethel, Norfolk",
+       "Seoul, Korea",
+       "Philippines",
+       "Moscow",
+       "Oslo, Norway",
+       "Norway",
+       "Monaco",
+       "South Korea",
+       "Roma, Italia",
+       "null",
+       "Australia",
+       "Canada",
+       "Tokyo",
+       "Windhoek",
+       "(Doctors Without Borders)",
+       "Seattle, Washington",
+       "Tokyo",
+       "United Nations",
+       "Manila, Philippines",
+       "Geneva, Switzerland",
+       "London, England",
+       "Palais des Nations Switzerland",
+       "Bangkok, Nairobi, New York",
+       "null",
+       "Sierra Leone",
+       "null",
+       "Philippines",
+       "Manila, Philippines",
+       "Charleston, SC",
+       "Delivering your photos",
+       "The Philippines",
+       "Richmond, VA",
+       "Worldwide",
+       "Madrid",
+       "Philippines",
+       "London, UK",
+       "Kuala Lumpur",
+       "Paris",
+       "United Kingdom",
+       "Global",
+       "Quezon City, Philippines",
+       "Headquarters: Portland, OR",
+       "Fairfield, CT USA",
+       "Genve",
+       "International",
+       "Boone, NC",
+       "Cebu, Philippines",
+       "Canada",
+       "Worldwide",
+       "Washington, DC",
+       "177 countries & territories",
+       "Oxford, UK",
+       "Paris, France",
+       "Global",
+       "Working in 30+ Countries",
+       "Dublin",
+       "Toronto, Canada",
+       "Luxembourg",
+       "Brussels and Worldwide",
+       "Atlanta",
+       "Jakarta, Indonesia",
+       "Paris, France",
+       "London, England",
+       "null",
+       "United Nations",
+       "null",
+       "Virginia",
+       "International Headquarters",
+       "Philippines",
+       "United Kingdom",
+       "New York, NY",
+       "Washington, D.C.",
+       "Worldwide",
+       "null",
+       "T: 34.018689,-118.483186",
+       "Geneva, Switzerland ",
+       "Geneva, Switzerland",
+       "Action in 60+ countries",
+       "London",
+       "Manila, Philippines",
+       "ABS-CBN, Diliman, Quezon City",
+       "Geneva",
+       "London, UK",
+       "Makati City",
+       "Mxico"
+   ]
+  }
+];
+
+	var org_loc = data[0]["loc-lat"];
+	console.log("lat" + org_loc[0]+ " Long:"+org_loc [1]);
+	var latlng = new google.maps.LatLng(org_loc[0],org_loc[1]);
+    var map = new google.maps.Map(document.getElementById("map_canvas"),
+    {
+        zoom: 3,
+              center:latlng ,
+              mapTypeId: google.maps.MapTypeId.ROADMAP   
+    });
+	addMarker(data,latlng,map,-1);	
+	//route.push(latlng);
+	
+	var routes= [];
+	var ltng = data[0]["location_latlng"];
+    for( i in ltng){
+		if(ltng[i] == "null") {
+			console.log("Null value");
+		}else {
+			console.log(i);
+			//console.log("lat" + ltng[i][0]+ " Long:"+ ltng[i][1]);
+			 var latpo = new google.maps.LatLng(ltng[i][0],ltng[i][1]);
+			 addMarker(data,latpo, map, i);
+			 routes.push(latpo);
+			 
+			}
+ 		}	
+		for (i in routes){
+		var route = [latlng];
+		route.push(routes[i]);
+		var path = new google.maps.Polyline(
+			{
+              path: route,
+              strokeColor: "#FF0000",
+              strokeOpacity: 1.0,
+              strokeWeight: 2,	
+			  geodesic: true
+        });
+    path.setMap(map);     
+}
+}
+
+
+
+
+</script>
