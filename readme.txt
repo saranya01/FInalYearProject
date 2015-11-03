@@ -1,3 +1,9 @@
+AUTHORS
+
+- Kalyan Pichumani (658807))
+- Saranya Nagarajan (673057) 
+
+
 CouchDB URL
 - 115.146.94.14:5984/_utils/
 - 115.146.95.154:5984/_utils/
