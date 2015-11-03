@@ -5,8 +5,8 @@ AUTHORS
 
 
 CouchDB URL
-- 115.146.94.14:5984/_utils/
-- 115.146.95.154:5984/_utils/
+- http://115.146.94.14:5984/_utils/
+- http://115.146.95.154:5984/_utils/
 Web URL
 - http://115.146.95.154:98/aja/sentiment-analysis.html - to visualize the data analysis
 - http://115.146.95.154:98/aja/adb.html - to view the organization and their followers.
